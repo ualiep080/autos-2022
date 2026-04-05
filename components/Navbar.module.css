@@ -1,0 +1,84 @@
+.header {
+  background-color: var(--surface-color);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.link {
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.link:hover {
+  color: var(--primary);
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.mobileMenuBtn {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--text-main);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+  .links {
+    display: none; /* In a real app we'd toggle a mobile menu state */
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background-color: var(--surface-color);
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .links.open {
+    display: flex;
+  }
+
+  .actions {
+    display: none; /* Hide desktop actions on mobile if menu closed */
+  }
+
+  .mobileMenuBtn {
+    display: block;
+  }
+}

@@ -1,0 +1,75 @@
+.header {
+  background-color: var(--secondary);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--text-muted);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  padding: 3rem 0;
+}
+
+.sidebar {
+  background-color: var(--surface-color);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.filterGroup {
+  margin-bottom: 1.5rem;
+}
+
+.filterGroup h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--secondary);
+}
+
+.filterGroup select, .filterGroup input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.5rem;
+}
+
+.clearFilters {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--text-muted);
+  text-decoration: underline;
+  font-size: 0.875rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+  }
+}

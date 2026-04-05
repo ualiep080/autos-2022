@@ -1,0 +1,26 @@
+{
+  "name": "coches-vicar",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "@vercel/blob": "^2.3.3",
+    "form-data": "^4.0.5",
+    "jose": "^6.2.2",
+    "next": "16.2.2",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "dotenv": "^17.4.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.2",
+    "prisma": "^6.19.3"
+  }
+}

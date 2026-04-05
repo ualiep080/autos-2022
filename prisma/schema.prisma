@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+model Vehicle {
+  id               String         @id @default(uuid())
+  marca            String
+  modelo           String
+  version          String?
+  slug             String         @unique
+  precio           Float
+  year             Int
+  kilometros       Int
+  combustible      String
+  cambio           String
+  potencia         Int?
+  motor            String?
+  color            String?
+  puertas          Int?
+  plazas           Int?
+  etiquetaAmbiental String?       @map("etiqueta_ambiental")
+  descripcion      String?
+  equipamiento     String?
+  observaciones    String?
+  estado           String         @default("disponible") // disponible, reservado, vendido
+  destacado        Boolean        @default(false)
+  visible          Boolean        @default(true)
+  fechaPublicacion DateTime       @default(now()) @map("fecha_publicacion")
+  fechaActualizacion DateTime     @updatedAt @map("fecha_actualizacion")
+
+  images           VehicleImage[]
+  leads            Lead[]
+}
+
+model VehicleImage {
+  id          String   @id @default(uuid())
+  vehicleId   String   @map("vehicle_id")
+  url         String
+  alt         String?
+  orden       Int      @default(0)
+  esPrincipal Boolean  @default(false) @map("es_principal")
+
+  vehicle     Vehicle  @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+}
+
+model Lead {
+  id           String   @id @default(uuid())
+  nombre       String
+  telefono     String
+  email        String?
+  mensaje      String
+  vehicleId    String?  @map("vehicle_id")
+  estado       String   @default("nuevo") // nuevo, contactado, cerrado
+  fechaCreacion DateTime @default(now()) @map("fecha_creacion")
+
+  vehicle      Vehicle? @relation(fields: [vehicleId], references: [id], onDelete: SetNull)
+}
+
+model AdminUser {
+  id           String   @id @default(uuid())
+  nombre       String
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  rol          String   @default("admin")
+}
+
+model SiteSettings {
+  id             String   @id @default(uuid())
+  telefono       String?
+  whatsapp       String?
+  email          String?
+  direccion      String?
+  horario        String?
+  textosHome     String?  @map("textos_home")
+  redesSociales  String?  @map("redes_sociales")
+}
