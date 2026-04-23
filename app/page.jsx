@@ -2,13 +2,21 @@ import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
 import VehicleCard from '@/components/VehicleCard';
 import styles from './page.module.css';
+import {
+  IconCheckCircle,
+  IconCash,
+  IconTruck,
+  IconShield,
+  IconStar,
+  IconPhone,
+} from '@/components/Icons';
 
 export const metadata = {
-  title: 'Coches de segunda mano y ocasión en Vícar, Almería | Autos 2022',
-  description: 'Encuentra tu próximo coche en Vícar, Almería. Vehículos de 2ª mano, seminuevos y ocasión totalmente revisados, garantizados y al mejor precio.',
+  title: 'Autos 2022 — Compramos todo tipo de vehículos en Almería',
+  description: 'Compramos todo tipo de vehículos en Vícar, Almería. Pago inmediato en efectivo, recogemos tu vehículo en menos de 24h. Con embargos, multas o impuestos atrasados.',
 };
 
-export const revalidate = 60; // Revalidate every minute
+export const revalidate = 60;
 
 export default async function Home() {
   const destacadas = await prisma.vehicle.findMany({
@@ -20,17 +28,61 @@ export default async function Home() {
 
   return (
     <div>
+      {/* ===== HERO ===== */}
       <section className={styles.hero}>
         <div className="container">
-          <h1 className={styles.heroTitle}>Coches de Segunda Mano en Vícar, Almería</h1>
-          <p className={styles.heroSubtitle}>Encuentra tu próximo coche al mejor precio. Vehículos revisados, seleccionados y listos para entrega inmediata.</p>
+          <div className={styles.heroBadge}>
+            <span>⭐</span> Compraventa de vehículos — Vícar, Almería
+          </div>
+
+          <h1 className={styles.heroTitle}>
+            Compramos{' '}
+            <span className={styles.heroTitleAccent}>todo tipo</span>
+            <br />
+            de vehículos
+          </h1>
+
+          <p className={styles.heroSubtitle}>
+            Pago inmediato en efectivo · Sin burocracia · Nos encargamos de todos los trámites
+          </p>
+
+          <div className={styles.heroBullets}>
+            <div className={styles.heroBullet}>
+              <span className={styles.heroBulletIcon}>✔</span>
+              Recogida en menos de 24&nbsp;horas
+            </div>
+            <div className={styles.heroBullet}>
+              <span className={styles.heroBulletIcon}>✔</span>
+              Con embargos, multas o impuestos atrasados
+            </div>
+            <div className={styles.heroBullet}>
+              <span className={styles.heroBulletIcon}>✔</span>
+              Máxima tasación garantizada
+            </div>
+          </div>
+
           <div className={styles.heroActions}>
-            <Link href="/coches-en-stock" className="btn btn-primary">Ver coches disponibles</Link>
-            <a href="https://wa.me/34600000000" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">Contactar por WhatsApp</a>
+            <a
+              href="https://wa.me/34610259725"
+              className="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="hero-whatsapp-btn"
+            >
+              📲 Solicitar tasación gratis
+            </a>
+            <a
+              href="tel:+34610259725"
+              className="btn btn-secondary"
+              id="hero-call-btn"
+            >
+              📞 Llamar ahora
+            </a>
           </div>
         </div>
       </section>
 
+      {/* ===== SEARCH BOX ===== */}
       <div className="container">
         <section className={styles.searchBox}>
           <form action="/coches-en-stock" method="GET" className={styles.searchGrid}>
@@ -42,6 +94,9 @@ export default async function Home() {
                 <option value="Volkswagen">Volkswagen</option>
                 <option value="Audi">Audi</option>
                 <option value="BMW">BMW</option>
+                <option value="Renault">Renault</option>
+                <option value="Ford">Ford</option>
+                <option value="Opel">Opel</option>
               </select>
             </div>
             <div className={styles.inputGroup}>
@@ -58,87 +113,151 @@ export default async function Home() {
               <label htmlFor="precio_max">Precio máximo</label>
               <select name="precio_max" id="precio_max">
                 <option value="">Cualquier precio</option>
+                <option value="5000">Hasta 5.000€</option>
                 <option value="10000">Hasta 10.000€</option>
                 <option value="15000">Hasta 15.000€</option>
                 <option value="20000">Hasta 20.000€</option>
-                <option value="30000">Hasta 30.000€</option>
               </select>
             </div>
             <div className={styles.inputGroup}>
-              <button type="submit" className="btn btn-primary">Buscar coche</button>
+              <button type="submit" className="btn btn-primary" id="search-btn">
+                Buscar vehículo
+              </button>
             </div>
           </form>
         </section>
       </div>
 
-      <section className={styles.sectionLight}>
-        <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', marginBottom: '2rem' }}>
-            <div>
-              <h2 className="section-title">Vehículos Destacados</h2>
-              <p className="section-subtitle" style={{marginBottom: 0}}>Nuestro stock más exclusivo, revisado y garantizado.</p>
+      {/* ===== VEHÍCULOS DESTACADOS ===== */}
+      {destacadas.length > 0 && (
+        <section className={`${styles.section} ${styles.sectionLight}`}>
+          <div className="container">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '2.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+              <div>
+                <div className="accent-line" />
+                <h2 className="section-title">Vehículos en Stock</h2>
+                <p className="section-subtitle" style={{ marginBottom: 0 }}>
+                  Coches revisados y listos para entrega inmediata.
+                </p>
+              </div>
+              <Link href="/coches-en-stock" className="btn btn-outline" id="ver-catalogo-btn">
+                Ver todo el catálogo →
+              </Link>
             </div>
-            <Link href="/coches-en-stock" className="btn btn-outline" style={{ display: 'flex', whiteSpace: 'nowrap' }}>
-              Ver todo el catálogo
-            </Link>
-          </div>
-          
-          <div className={styles.grid3}>
-            {destacadas.map(car => (
-              <VehicleCard key={car.id} vehicle={car} />
-            ))}
-            {destacadas.length === 0 && (
-              <p style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '3rem' }}>No hay vehículos destacados de momento.</p>
-            )}
-          </div>
-        </div>
-      </section>
 
+            <div className={styles.grid3}>
+              {destacadas.map(car => (
+                <VehicleCard key={car.id} vehicle={car} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ===== ¿POR QUÉ VENDERNOS TU VEHÍCULO? ===== */}
       <section className={styles.section}>
         <div className="container">
-          <h2 className="section-title" style={{ textAlign: 'center' }}>¿Por qué comprar tu coche con nosotros?</h2>
-          <p className="section-subtitle" style={{ textAlign: 'center', margin: '0 auto 3rem' }}>Tu tranquilidad y confianza son lo primero.</p>
-          
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <div className="accent-line" style={{ margin: '0 auto 1.5rem' }} />
+            <h2 className="section-title">¿Por qué vendernos tu vehículo?</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto' }}>
+              Rápido, sencillo y sin complicaciones. Nos encargamos de todo.
+            </p>
+          </div>
+
           <div className={styles.advGrid}>
             <div className={styles.advCard}>
-              <div className={styles.advIcon}>✅</div>
-              <h3 className={styles.advTitle}>Vehículos Revisados</h3>
-              <p className={styles.advDesc}>Todos nuestros coches pasan un estricto control mecánico antes de su venta.</p>
+              <div className={styles.advIcon}>
+                <IconTruck />
+              </div>
+              <h3 className={styles.advTitle}>Recogida en menos de 24h</h3>
+              <p className={styles.advDesc}>
+                Recogemos tu vehículo donde tú nos indiques. Sin esperas, sin desplazamientos.
+              </p>
             </div>
+
             <div className={styles.advCard}>
-              <div className={styles.advIcon}>💶</div>
-              <h3 className={styles.advTitle}>Financiación a Medida</h3>
-              <p className={styles.advDesc}>Estudiamos tu caso y te ofrecemos las mejores opciones para que pagues cómodamente.</p>
+              <div className={styles.advIcon}>
+                <IconCash />
+              </div>
+              <h3 className={styles.advTitle}>Pago inmediato en efectivo</h3>
+              <p className={styles.advDesc}>
+                Recibes el dinero en el momento. Sin esperas ni transferencias que tardan días.
+              </p>
             </div>
+
             <div className={styles.advCard}>
-              <div className={styles.advIcon}>🚙</div>
-              <h3 className={styles.advTitle}>Tu coche en parte de pago</h3>
-              <p className={styles.advDesc}>Tasamos tu coche actual y te lo descontamos del precio de tu nuevo vehículo.</p>
+              <div className={styles.advIcon}>
+                <IconShield />
+              </div>
+              <h3 className={styles.advTitle}>Gestionamos los trámites</h3>
+              <p className={styles.advDesc}>
+                Nos ocupamos de todo el papeleo: transferencia, impuestos y gestión administrativa.
+              </p>
             </div>
+
             <div className={styles.advCard}>
-              <div className={styles.advIcon}>📍</div>
-              <h3 className={styles.advTitle}>Asesoramiento Cercano</h3>
-              <p className={styles.advDesc}>Trato directo y transparente desde nuestras instalaciones en Vícar, Almería.</p>
+              <div className={styles.advIcon}>
+                <IconStar />
+              </div>
+              <h3 className={styles.advTitle}>Máxima tasación</h3>
+              <p className={styles.advDesc}>
+                Te ofrecemos el mejor precio del mercado. Consulta sin compromiso.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
+      {/* ===== BANNER VENDE TU VEHÍCULO ===== */}
+      <section style={{ background: 'var(--bg-color)', padding: '0 0 5rem' }}>
+        <div className="container">
+          <div className={styles.sellBanner}>
+            <div>
+              <h2 className={styles.sellBannerTitle}>
+                ¿Tienes un vehículo que <span>quieres vender</span>?
+              </h2>
+              <p className={styles.sellBannerDesc}>
+                Compramos todo tipo de vehículos · Con embargos, multas o impuestos atrasados · Transporte incluido
+              </p>
+            </div>
+            <div className={styles.sellBannerActions}>
+              <a
+                href="https://wa.me/34610259725"
+                className="btn btn-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+                id="sell-banner-whatsapp-btn"
+              >
+                📲 WhatsApp
+              </a>
+              <Link href="/vende-tu-vehiculo" className="btn btn-outline-gold" id="sell-banner-link-btn">
+                Más información →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SEO CONTENT ===== */}
       <section className={`${styles.section} ${styles.sectionLight}`}>
         <div className="container">
           <div className={styles.seoContent}>
-            <h2 className="section-title">Compraventa de coches de ocasión en Vícar y Almería</h2>
+            <div className="accent-line" />
+            <h2 className="section-title" style={{ fontSize: '1.5rem' }}>
+              Compraventa de vehículos en Vícar y Almería
+            </h2>
             <p>
-              Si estás pensando en <strong>comprar un coche usado en Almería</strong>, en Autos 2022 te ofrecemos una selección 
-              exclusiva de vehículos de segunda mano, seminuevos y ocasión de todas las marcas.
+              En <strong>Autos 2022</strong> compramos todo tipo de vehículos en Almería y alrededores.
+              Coches, caravanas, motocicletas, tractores, remolques y barcos. También vehículos
+              con embargos, multas o impuestos atrasados — <strong>nosotros nos encargamos de las gestiones</strong>.
             </p>
             <p>
-              Trabajamos cada día para ofrecer el mejor <strong>concesionario de coches en Almería</strong> con un servicio 
-              postventa de calidad, gestión rápida del papeleo y una transparencia total en cada vehículo que entra en nuestras instalaciones.
-            </p>
-            <p>
-              Consúltanos por WhatsApp o ven a visitarnos a nuestras instalaciones. Encontraremos el coche que mejor se adapte 
-              a tu estilo de vida y a tu presupuesto.
+              Nuestro servicio incluye la <strong>recogida del vehículo en menos de 24 horas</strong> y
+              el <strong>pago inmediato en efectivo</strong>. Consulta sin compromiso llamando al{' '}
+              <a href="tel:+34610259725" style={{ color: 'var(--primary-dark)', fontWeight: 700 }}>
+                610 25 97 25
+              </a>.
             </p>
           </div>
         </div>

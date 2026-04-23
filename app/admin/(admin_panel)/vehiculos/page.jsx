@@ -24,8 +24,8 @@ export default async function AdminVehiclesPage() {
         <Link href="/admin/vehiculos/nuevo" className="btn btn-primary">+ Añadir Vehículo</Link>
       </div>
 
-      <div style={{ backgroundColor: 'white', borderRadius: '0.5rem', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+      <div className="table-responsive" style={{ backgroundColor: 'white', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}>
+        <table style={{ minWidth: '800px', width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
             <tr style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
               <th style={{ padding: '1rem', fontWeight: '600', color: '#64748b' }}>Marca y Modelo</th>

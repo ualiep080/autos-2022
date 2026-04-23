@@ -21,9 +21,26 @@ export default function ContactoPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
               <span style={{ fontSize: '1.5rem' }}>📍</span>
-              <div>
+              <div style={{ width: '100%' }}>
                 <strong style={{ display: 'block', marginBottom: '0.25rem' }}>Dirección</strong>
-                <p style={{ color: 'var(--text-muted)' }}>Polígono Industrial<br/>04738 Vícar, Almería</p>
+                <p style={{ color: 'var(--text-muted)', marginBottom: '1rem' }}>Blvr. Cdad. de Vícar, 75<br/>04738 La Gangosa, Almería</p>
+                <iframe 
+                  src="https://maps.google.com/maps?q=Blvr.%20Cdad.%20de%20V%C3%ADcar,%2075,%2004738%20La%20Gangosa,%20Almer%C3%ADa&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                  width="100%" 
+                  height="250" 
+                  style={{ border: 0, borderRadius: '0.5rem', marginBottom: '1rem' }} 
+                  allowFullScreen 
+                  loading="lazy">
+                </iframe>
+                <a 
+                  href="https://www.google.com/maps/place/TGG+COMPETICION/@36.807344,-2.6059797,19.5z/data=!4m6!3m5!1s0xd707123edfd0ea1:0xa740652f3fd0fa75!8m2!3d36.8073045!4d-2.6055819!16s%2Fg%2F11s0t2sjnp?entry=ttu" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn-outline" 
+                  style={{ width: '100%', padding: '0.6rem' }}
+                >
+                  🗺️ Cómo llegar
+                </a>
               </div>
             </div>
 
@@ -31,7 +48,7 @@ export default function ContactoPage() {
               <span style={{ fontSize: '1.5rem' }}>📞</span>
               <div>
                 <strong style={{ display: 'block', marginBottom: '0.25rem' }}>Teléfono</strong>
-                <p style={{ color: 'var(--text-muted)' }}><a href="tel:600000000" style={{ color: 'var(--primary)' }}>600 000 000</a></p>
+                <p style={{ color: 'var(--text-muted)' }}><a href="tel:+34610259725" style={{ color: 'var(--text-main)', fontWeight: 600 }}>610 25 97 25</a></p>
               </div>
             </div>
 
@@ -39,7 +56,7 @@ export default function ContactoPage() {
               <span style={{ fontSize: '1.5rem' }}>💬</span>
               <div>
                 <strong style={{ display: 'block', marginBottom: '0.25rem' }}>WhatsApp</strong>
-                <p style={{ color: 'var(--text-muted)' }}><a href="https://wa.me/34600000000" style={{ color: 'var(--primary)' }} target="_blank" rel="noopener noreferrer">600 000 000</a></p>
+                <p style={{ color: 'var(--text-muted)' }}><a href="https://wa.me/34610259725" style={{ color: 'var(--text-main)', fontWeight: 600 }} target="_blank" rel="noopener noreferrer">610 25 97 25</a></p>
               </div>
             </div>
 

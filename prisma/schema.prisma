@@ -79,3 +79,13 @@ model SiteSettings {
   textosHome     String?  @map("textos_home")
   redesSociales  String?  @map("redes_sociales")
 }
+
+model PageView {
+  id        String   @id @default(uuid())
+  event     String   @default("pageview") // pageview | click
+  page      String
+  element   String?  // ID del elemento clicado (solo para clicks)
+  ip        String?
+  userAgent String?  @map("user_agent")
+  createdAt DateTime @default(now()) @map("created_at")
+}

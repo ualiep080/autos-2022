@@ -33,7 +33,7 @@
   width: 100%;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background-color: #0f172a; /* Fondo oscuro para resaltar la imagen contenida */
+  background-color: #f3f4f6;
   aspect-ratio: 16/9;
   position: relative;
   display: flex;
@@ -44,7 +44,7 @@
 .mainImage img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .thumbnails {
@@ -136,9 +136,10 @@
 }
 
 .price {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--primary);
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--secondary);
+  line-height: 1;
   margin-bottom: 0.5rem;
 }
 
@@ -199,5 +200,23 @@
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.75rem;
+  }
+  
+  .content, .priceBox, .contactForm {
+    padding: 1.25rem;
+  }
+  
+  .price {
+    font-size: 2.25rem;
+  }
+  
+  .specsGrid {
+    grid-template-columns: 1fr 1fr;
   }
 }

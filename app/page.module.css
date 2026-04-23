@@ -1,30 +1,78 @@
+/* ===== HERO ===== */
 .hero {
-  background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=2000&auto=format&fit=crop') center/cover;
+  background: linear-gradient(rgba(15, 15, 15, 0.82), rgba(26, 26, 26, 0.92)),
+              url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
   color: white;
-  padding: 6rem 0;
+  padding: 7rem 0 5rem;
   text-align: center;
 }
 
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(245, 197, 24, 0.15);
+  border: 1px solid rgba(245, 197, 24, 0.4);
+  color: #F5C518;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .heroTitle {
-  font-size: 3.5rem;
+  font-size: 3.75rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  line-height: 1.2;
+  line-height: 1.15;
+  color: white;
+}
+
+.heroTitleAccent {
+  color: #F5C518;
 }
 
 .heroSubtitle {
-  font-size: 1.25rem;
-  color: #cbd5e1;
-  max-width: 700px;
-  margin: 0 auto 3rem;
+  font-size: 1.2rem;
+  color: #d1d5db;
+  max-width: 620px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.7;
+}
+
+.heroBullets {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.heroBullet {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.975rem;
+  font-weight: 600;
+  color: white;
+}
+
+.heroBulletIcon {
+  color: #F5C518;
+  font-size: 1.1rem;
 }
 
 .heroActions {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
+/* ===== SEARCH BOX ===== */
 .searchBox {
   background: var(--surface-color);
   padding: 2rem;
@@ -56,13 +104,24 @@
 
 .inputGroup select, .inputGroup input {
   padding: 0.75rem;
-  border: 1px solid var(--border-color);
+  border: 1.5px solid var(--border-color);
   border-radius: var(--radius-md);
   outline: none;
+  transition: border-color var(--transition-fast);
 }
 
-/* Sections */
+.inputGroup select:focus, .inputGroup input:focus {
+  border-color: var(--primary);
+}
+
+/* ===== SECTIONS ===== */
 .section {
+  padding: 5rem 0;
+}
+
+.sectionDark {
+  background-color: var(--secondary);
+  color: white;
   padding: 5rem 0;
 }
 
@@ -70,50 +129,96 @@
   background-color: var(--surface-color);
 }
 
+/* ===== VEHICLE GRID ===== */
 .grid3 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
 }
 
-/* Advantages */
+/* ===== ADVANTAGES GRID ===== */
 .advGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 2rem;
 }
 
 .advCard {
   background: var(--surface-color);
-  padding: 2rem;
+  padding: 2rem 1.75rem;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
+  border: 1.5px solid var(--border-color);
   text-align: center;
-  transition: transform var(--transition-fast);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .advCard:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
 }
 
 .advIcon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  width: 56px;
+  height: 56px;
+  background: rgba(245, 197, 24, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  color: var(--primary-dark);
 }
 
 .advTitle {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: var(--secondary);
+  color: var(--text-main);
   margin-bottom: 0.5rem;
 }
 
 .advDesc {
   color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-/* SEO Content */
+/* ===== SELL BANNER ===== */
+.sellBanner {
+  background: var(--secondary);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+}
+
+.sellBannerTitle {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.sellBannerTitle span {
+  color: #F5C518;
+}
+
+.sellBannerDesc {
+  color: #9ca3af;
+  font-size: 1rem;
+}
+
+.sellBannerActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 220px;
+}
+
+/* ===== SEO CONTENT ===== */
 .seoContent {
   max-width: 800px;
   margin: 0 auto;
@@ -125,11 +230,44 @@
   line-height: 1.7;
 }
 
+/* ===== MEDIA QUERIES ===== */
 @media (max-width: 768px) {
+  .hero {
+    padding: 4rem 0 3rem;
+  }
   .heroTitle {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
   .heroActions {
     flex-direction: column;
+    align-items: stretch;
+  }
+  .heroActions .btn {
+    width: 100%;
+  }
+  .heroBullets {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .searchBox {
+    margin-top: -2rem;
+    padding: 1.5rem;
+  }
+  .section, .sectionDark {
+    padding: 3.5rem 0;
+  }
+  .sellBanner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+  }
+  .sellBannerTitle {
+    font-size: 1.5rem;
+  }
+  .sellBannerActions {
+    min-width: unset;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 }

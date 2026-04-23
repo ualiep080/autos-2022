@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma';
+import { markAsContacted, markAsNew } from './actions';
 
 export const metadata = {
   title: 'Contactos | Panel de Administración',
@@ -16,8 +17,8 @@ export default async function AdminLeadsPage() {
     <div>
       <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '2rem' }}>Contactos Recibidos (Leads)</h1>
 
-      <div style={{ backgroundColor: 'white', borderRadius: '0.5rem', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+      <div className="table-responsive" style={{ backgroundColor: 'white', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}>
+        <table style={{ minWidth: '700px', width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
             <tr style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
               <th style={{ padding: '1rem', fontWeight: '600', color: '#64748b' }}>Fecha</th>
@@ -52,11 +53,27 @@ export default async function AdminLeadsPage() {
                     borderRadius: '0.25rem', 
                     fontSize: '0.75rem', 
                     fontWeight: 'bold',
+                    display: 'inline-block',
+                    marginBottom: '0.5rem',
                     backgroundColor: lead.estado === 'nuevo' ? '#fef08a' : '#dcfce7',
                     color: lead.estado === 'nuevo' ? '#854d0e' : '#166534'
                   }}>
-                    {lead.estado.toUpperCase()}
+                    {lead.estado === 'nuevo' ? 'NUEVO' : 'ATENDIDO'}
                   </span>
+                  <form action={lead.estado === 'nuevo' ? markAsContacted : markAsNew}>
+                    <input type="hidden" name="id" value={lead.id} />
+                    <button type="submit" style={{
+                      fontSize: '0.75rem',
+                      padding: '0.25rem 0.5rem',
+                      borderRadius: '0.25rem',
+                      border: '1px solid #cbd5e1',
+                      background: 'white',
+                      cursor: 'pointer',
+                      display: 'block'
+                    }}>
+                      {lead.estado === 'nuevo' ? '✓ Marcar Atendido' : '↩ Marcar Nuevo'}
+                    </button>
+                  </form>
                 </td>
               </tr>
             ))}

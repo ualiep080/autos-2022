@@ -13,14 +13,7 @@ export default function AdminSidebar() {
   ];
 
   const styles = {
-    sidebar: {
-      width: '250px',
-      backgroundColor: '#0f172a',
-      color: 'white',
-      padding: '2rem 1.5rem',
-      display: 'flex',
-      flexDirection: 'column',
-    },
+    // Removed sidebar inline styles as they are now in globals.css
     logo: {
       fontSize: '1.5rem',
       fontWeight: '800',
@@ -42,17 +35,17 @@ export default function AdminSidebar() {
       textDecoration: 'none'
     },
     linkActive: {
-      backgroundColor: '#1e293b',
-      color: 'white',
-      fontWeight: '600'
+      backgroundColor: 'var(--primary)',
+      color: 'var(--text-on-primary)',
+      fontWeight: '700'
     }
   };
 
   return (
-    <aside style={styles.sidebar}>
-      <div style={{ marginBottom: '3rem' }}>
+    <aside className="admin-sidebar">
+      <div className="admin-logo-wrapper" style={{ marginBottom: '3rem' }}>
         <Link href="/" style={styles.logo}>
-          Autos <span style={{color: '#dc2626'}}>2022</span>
+          Autos <span style={{color: 'var(--primary)'}}>2022</span>
         </Link>
         <div style={{fontSize:'0.875rem', fontWeight:'normal', color:'#94a3b8', marginTop: '0.25rem'}}>Panel Admin</div>
       </div>
@@ -68,7 +61,7 @@ export default function AdminSidebar() {
                 ...(isActive ? styles.linkActive : {})
               }}
               onMouseEnter={(e) => {
-                if (!isActive) e.target.style.backgroundColor = '#1e293b';
+                if (!isActive) e.target.style.backgroundColor = 'var(--secondary-light)';
               }}
               onMouseLeave={(e) => {
                 if (!isActive) e.target.style.backgroundColor = 'transparent';
@@ -82,7 +75,7 @@ export default function AdminSidebar() {
           href="/" 
           style={{...styles.link, marginTop: 'auto'}} 
           target="_blank"
-          onMouseEnter={(e) => e.target.style.backgroundColor = '#1e293b'}
+          onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light)'}
           onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
         >
           Ver web pública ↗
