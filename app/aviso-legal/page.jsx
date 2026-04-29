@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Aviso Legal | Garage Autos 2022',
-  description: 'Aviso legal de Garage Autos 2022, compraventa de vehículos en Vícar, Almería.',
+  title: 'Aviso Legal | Autos 2022',
+  description: 'Aviso legal de Autos 2022, compraventa de vehículos en Vícar, Almería.',
 };
 
 export default function AvisoLegalPage() {

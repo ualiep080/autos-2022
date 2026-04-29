@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Política de Privacidad | Garage Autos 2022',
-  description: 'Política de privacidad y protección de datos de Garage Autos 2022.',
+  title: 'Política de Privacidad | Autos 2022',
+  description: 'Política de privacidad y protección de datos de Autos 2022.',
 };
 
 export default function PrivacidadPage() {

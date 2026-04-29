@@ -1,8 +1,8 @@
 import VehicleTypeCard from './VehicleTypeCard';
 
 export const metadata = {
-  title: 'Vende tu Vehículo | Autos 2022 — Compramos todo tipo de vehículos',
-  description: 'Compramos tu vehículo al mejor precio. Pago inmediato en efectivo, recogida en menos de 24h, nos encargamos de todos los trámites. Almería.',
+  title: 'Vende tu coche en Almería | Autos 2022',
+  description: 'Compramos y valoramos vehículos usados, averiados, sin ITV, siniestrados o para desguace en Almería. Recogida rápida según disponibilidad y trato directo.',
 };
 
 export default function VendeTuVehiculoPage() {

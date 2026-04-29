@@ -1,8 +1,8 @@
 import LeadForm from '@/app/coches-en-stock/[slug]/LeadForm';
 
 export const metadata = {
-  title: 'Contacto | Autos 2022, Almería',
-  description: 'Ponte en contacto con nuestro concesionario en Vícar para solicitarnos información, comprar tu vehículo o pedir cita previa.',
+  title: 'Contacto y ubicación | Autos 2022',
+  description: 'Contacta con Autos 2022 en Vícar, Almería. Atención por teléfono, WhatsApp y formulario de contacto.',
 };
 
 export default function ContactoPage() {

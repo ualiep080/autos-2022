@@ -12,8 +12,8 @@ import {
 } from '@/components/Icons';
 
 export const metadata = {
-  title: 'Autos 2022 — Compramos todo tipo de vehículos en Almería',
-  description: 'Compramos todo tipo de vehículos en Vícar, Almería. Pago inmediato en efectivo, recogemos tu vehículo en menos de 24h. Con embargos, multas o impuestos atrasados.',
+  title: 'Autos 2022 | Compraventa de coches en Vícar, Almería',
+  description: 'Compra y venta de vehículos en Vícar, Almería. En Autos 2022 te ayudamos a vender tu coche, consultar stock disponible y gestionar la recogida de vehículos.',
 };
 
 export const revalidate = 60;

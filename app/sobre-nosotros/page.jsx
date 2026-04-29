@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Sobre Nosotros | Autos 2022, concesionario en Almería',
-  description: 'Conoce nuestro concesionario de coches de segunda mano en Vícar. Años de experiencia ofreciendo la mejor calidad y servicio al cliente.',
+  title: 'Sobre Autos 2022 | Compraventa de vehículos en Almería',
+  description: 'Conoce Autos 2022, empresa de compraventa de vehículos en Vícar, Almería, con trato cercano y atención personalizada.',
 };
 
 export default function SobreNosotrosPage() {
