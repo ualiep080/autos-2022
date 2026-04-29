@@ -23,7 +23,7 @@ export default function SobreNosotrosPage() {
             Autos 2022 nace con el objetivo de ofrecer una alternativa transparente, profesional y cercana para la compra de coches de segunda mano y ocasión en Almería occidental. Situados estratégicamente en Vícar, nos hemos consolidado como un referente para quienes buscan seguridad en la compra de su próximo coche.
           </p>
           <p style={{ color: 'var(--text-main)' }}>
-            No somos un concesionario genérico. Seleccionamos cuidadosamente cada vehículo que entra en nuestro stock y nos aseguramos de que cumpla con nuestros altísimos estándares de calidad.
+            No somos un concesionario genérico. Seleccionamos cuidadosamente cada vehículo que entra en nuestro stock y nos aseguramos de que cumpla con nuestros estándares de calidad.
           </p>
         </div>
 

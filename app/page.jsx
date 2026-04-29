@@ -137,7 +137,7 @@ export default async function Home() {
                 <div className="accent-line" />
                 <h2 className="section-title">Vehículos en Stock</h2>
                 <p className="section-subtitle" style={{ marginBottom: 0 }}>
-                  Coches revisados y listos para entrega inmediata.
+                  Selección de coches disponibles actualmente en tienda.
                 </p>
               </div>
               <Link href="/coches-en-stock" className="btn btn-outline" id="ver-catalogo-btn">
