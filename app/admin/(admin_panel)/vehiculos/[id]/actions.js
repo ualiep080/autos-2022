@@ -16,6 +16,17 @@ export async function saveVehicleAction(formData, id, isNew) {
     const combustible = formData.get('combustible') || 'Gasolina';
     const cambio = formData.get('cambio') || 'Manual';
 
+    // Optional fields
+    const descripcionRaw = formData.get('descripcion');
+    const potenciaRaw = formData.get('potencia');
+    const colorRaw = formData.get('color');
+    const etiquetaRaw = formData.get('etiquetaAmbiental');
+
+    const descripcion = descripcionRaw?.trim() || null;
+    const potencia = potenciaRaw ? parseInt(potenciaRaw) || null : null;
+    const color = colorRaw?.trim() || null;
+    const etiquetaAmbiental = (etiquetaRaw && etiquetaRaw !== '') ? etiquetaRaw : null;
+
     // Base slug generated from brand & model
     const slug = `${marca.toLowerCase()}-${modelo.toLowerCase().replace(/ /g, '-')}-${Date.now()}`;
 
@@ -29,6 +40,10 @@ export async function saveVehicleAction(formData, id, isNew) {
       cambio,
       precio,
       estado,
+      descripcion,
+      potencia,
+      color,
+      etiquetaAmbiental,
       slug: isNew ? slug : undefined,
     };
 

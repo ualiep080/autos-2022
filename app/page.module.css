@@ -21,6 +21,8 @@
   margin-bottom: 1.5rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  max-width: 100%;
+  text-align: center;
 }
 
 .heroTitle {
@@ -63,6 +65,7 @@
 .heroBulletIcon {
   color: #F5C518;
   font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
 .heroActions {
@@ -108,6 +111,7 @@
   border-radius: var(--radius-md);
   outline: none;
   transition: border-color var(--transition-fast);
+  width: 100%;
 }
 
 .inputGroup select:focus, .inputGroup input:focus {
@@ -132,7 +136,7 @@
 /* ===== VEHICLE GRID ===== */
 .grid3 {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
 }
 
@@ -238,12 +242,16 @@
   .heroTitle {
     font-size: 2.25rem;
   }
+  .heroSubtitle {
+    font-size: 1.05rem;
+  }
   .heroActions {
     flex-direction: column;
     align-items: stretch;
   }
   .heroActions .btn {
     width: 100%;
+    justify-content: center;
   }
   .heroBullets {
     flex-direction: column;
@@ -252,7 +260,7 @@
   }
   .searchBox {
     margin-top: -2rem;
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
   }
   .section, .sectionDark {
     padding: 3.5rem 0;
@@ -269,5 +277,64 @@
     min-width: unset;
     flex-direction: column;
     gap: 0.75rem;
+  }
+  .grid3 {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 3.5rem 0 2.5rem;
+  }
+  .heroTitle {
+    font-size: 1.875rem;
+    line-height: 1.2;
+  }
+  .heroSubtitle {
+    font-size: 0.95rem;
+  }
+  .heroBadge {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.75rem;
+  }
+  .heroBullet {
+    font-size: 0.9rem;
+    text-align: left;
+  }
+  .searchBox {
+    margin-top: -1.5rem;
+    padding: 1.25rem 0.875rem;
+    border-radius: var(--radius-lg);
+  }
+  .section, .sectionDark {
+    padding: 2.5rem 0;
+  }
+  .sellBanner {
+    padding: 2rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+  .sellBannerTitle {
+    font-size: 1.25rem;
+  }
+  .sellBannerDesc {
+    font-size: 0.9rem;
+  }
+  .advGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .advCard {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .heroTitle {
+    font-size: 1.625rem;
+  }
+  .heroSubtitle {
+    font-size: 0.9rem;
   }
 }

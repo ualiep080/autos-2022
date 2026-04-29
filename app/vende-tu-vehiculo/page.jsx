@@ -33,14 +33,14 @@ export default function VendeTuVehiculoPage() {
           }}>
             ⭐ Compraventa de vehículos
           </div>
-          <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.2 }}>
+          <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 3rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.2 }}>
             Compramos tu vehículo<br />
             <span style={{ color: '#F5C518' }}>al mejor precio</span>
           </h1>
           <p style={{ fontSize: '1.15rem', color: '#d1d5db', maxWidth: '580px', margin: '0 auto 2.5rem', lineHeight: 1.7 }}>
             Pago inmediato en efectivo · Recogida en menos de 24h · Sin burocracia
           </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="cta-group">
             <a
               href="https://wa.me/34610259725"
               className="btn btn-primary"
@@ -196,7 +196,7 @@ export default function VendeTuVehiculoPage() {
           <p style={{ color: '#9ca3af', fontSize: '1rem', maxWidth: 500, margin: '0 auto 2.5rem' }}>
             Consúltanos sin compromiso. Te hacemos una oferta en minutos.
           </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="cta-group">
             <a
               href="https://wa.me/34610259725"
               className="btn btn-primary"

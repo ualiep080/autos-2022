@@ -48,6 +48,7 @@
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
 .clearFilters {
@@ -61,15 +62,55 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
+/* Tablet: sidebar on top */
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;
+    padding: 2rem 0;
+    gap: 1.5rem;
   }
   .sidebar {
     position: static;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .header {
+    padding: 3rem 0;
+  }
+  .title {
+    font-size: 1.875rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .filterGroup select, .filterGroup input {
+    padding: 0.65rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .header {
+    padding: 2.5rem 0;
+  }
+  .title {
+    font-size: 1.625rem;
+  }
+  .sidebar {
+    padding: 1rem;
+    border-radius: var(--radius-md);
+  }
+  .filterGroup {
+    margin-bottom: 1rem;
+  }
+  .layout {
+    padding: 1.5rem 0;
   }
 }

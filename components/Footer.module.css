@@ -32,6 +32,7 @@
   object-fit: contain;
   border-radius: 6px;
   border: 2px solid rgba(245, 197, 24, 0.3);
+  flex-shrink: 0;
 }
 
 .logoText {
@@ -162,21 +163,70 @@
 .legalLinks {
   display: flex;
   gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
+/* Tablet */
 @media (max-width: 900px) {
   .grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
   }
 }
 
+/* Mobile */
 @media (max-width: 768px) {
+  .footer {
+    padding: 3rem 0 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .brand {
+    grid-column: auto;
+  }
+
+  .waBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
   .bottom {
     flex-direction: column;
     text-align: center;
+    gap: 0.75rem;
   }
+
   .legalLinks {
     gap: 1rem;
+    justify-content: center;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .footer {
+    padding: 2.5rem 0 3rem; /* Extra bottom for iOS home bar */
+  }
+
+  .description {
+    font-size: 0.875rem;
+  }
+
+  .legalLinks {
+    gap: 0.75rem;
+  }
+
+  .link {
+    font-size: 0.875rem;
   }
 }
