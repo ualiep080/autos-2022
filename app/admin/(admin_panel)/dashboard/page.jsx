@@ -6,6 +6,7 @@ export const metadata = {
 };
 
 export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
   const [
@@ -80,10 +81,10 @@ export default async function DashboardPage() {
         Vehículos y Contactos
       </h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
-        {statCard('Vehículos Totales', totalVehicles)}
-        {statCard('Disponibles', availableVehicles, '#16a34a')}
-        {statCard('Leads Totales', totalLeads)}
-        {statCard('Leads Nuevos', newLeads, '#ea580c', 'Sin gestionar')}
+        {statCard('Vehículos Totales', totalVehicles ?? 0)}
+        {statCard('Disponibles', availableVehicles ?? 0, '#16a34a')}
+        {statCard('Leads Totales', totalLeads ?? 0)}
+        {statCard('Leads Nuevos', newLeads ?? 0, '#ea580c', 'Sin gestionar')}
       </div>
 
       {/* ===== KPIs tráfico ===== */}
@@ -91,8 +92,8 @@ export default async function DashboardPage() {
         Tráfico Web
       </h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
-        {statCard('Visitas Totales', totalViews, '#1a1a1a')}
-        {statCard('Visitas Hoy', viewsToday, '#F5C518')}
+        {statCard('Visitas Totales', totalViews ?? 0, '#1a1a1a')}
+        {statCard('Visitas Hoy', viewsToday ?? 0, '#F5C518')}
       </div>
 
       {/* ===== Tablas analytics ===== */}
@@ -111,12 +112,12 @@ export default async function DashboardPage() {
               </tr>
             </thead>
             <tbody>
-              {topPages.length === 0 ? (
+              {(!topPages || topPages.length === 0) ? (
                 <tr><td colSpan={2} style={{ padding: '1.5rem', textAlign: 'center', color: '#9ca3af' }}>Sin datos aún</td></tr>
-              ) : topPages.map((row) => (
-                <tr key={row.page} style={{ borderTop: '1px solid #f3f4f6' }}>
-                  <td style={{ padding: '0.65rem 1.5rem', fontFamily: 'monospace', color: 'var(--text-main)' }}>{row.page || '/'}</td>
-                  <td style={{ padding: '0.65rem 1.5rem', textAlign: 'right', fontWeight: 700, color: '#F5C518', fontFamily: 'monospace' }}>{Number(row._count.page)}</td>
+              ) : topPages.map((row, i) => (
+                <tr key={row?.page || i} style={{ borderTop: '1px solid #f3f4f6' }}>
+                  <td style={{ padding: '0.65rem 1.5rem', fontFamily: 'monospace', color: 'var(--text-main)' }}>{row?.page || '/'}</td>
+                  <td style={{ padding: '0.65rem 1.5rem', textAlign: 'right', fontWeight: 700, color: '#F5C518', fontFamily: 'monospace' }}>{Number(row?._count?.page ?? 0)}</td>
                 </tr>
               ))}
             </tbody>
@@ -136,12 +137,12 @@ export default async function DashboardPage() {
               </tr>
             </thead>
             <tbody>
-              {topClicks.length === 0 ? (
+              {(!topClicks || topClicks.length === 0) ? (
                 <tr><td colSpan={2} style={{ padding: '1.5rem', textAlign: 'center', color: '#9ca3af' }}>Sin datos aún</td></tr>
-              ) : topClicks.map((row) => (
-                <tr key={row.element} style={{ borderTop: '1px solid #f3f4f6' }}>
-                  <td style={{ padding: '0.65rem 1.5rem', fontFamily: 'monospace', fontSize: '0.8rem', color: 'var(--text-main)' }}>{row.element}</td>
-                  <td style={{ padding: '0.65rem 1.5rem', textAlign: 'right', fontWeight: 700, color: '#16a34a', fontFamily: 'monospace' }}>{Number(row._count.element)}</td>
+              ) : topClicks.map((row, i) => (
+                <tr key={row?.element || i} style={{ borderTop: '1px solid #f3f4f6' }}>
+                  <td style={{ padding: '0.65rem 1.5rem', fontFamily: 'monospace', fontSize: '0.8rem', color: 'var(--text-main)' }}>{row?.element}</td>
+                  <td style={{ padding: '0.65rem 1.5rem', textAlign: 'right', fontWeight: 700, color: '#16a34a', fontFamily: 'monospace' }}>{Number(row?._count?.element ?? 0)}</td>
                 </tr>
               ))}
             </tbody>
