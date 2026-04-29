@@ -1,10 +1,21 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function AdminSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+      router.push('/admin/login');
+      router.refresh();
+    } catch (error) {
+      console.error('Error logging out', error);
+    }
+  };
 
   const navItems = [
     { name: 'Dashboard', path: '/admin/dashboard' },
@@ -80,6 +91,29 @@ export default function AdminSidebar() {
         >
           Ver web pública ↗
         </Link>
+        <button 
+          onClick={handleLogout}
+          style={{
+            ...styles.link, 
+            marginTop: '0.5rem', 
+            backgroundColor: 'transparent',
+            border: 'none',
+            textAlign: 'left',
+            cursor: 'pointer',
+            fontFamily: 'inherit',
+            fontSize: '1rem'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = 'rgba(239, 68, 68, 0.1)';
+            e.target.style.color = '#ef4444';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = 'transparent';
+            e.target.style.color = '#cbd5e1';
+          }}
+        >
+          Cerrar sesión
+        </button>
       </nav>
     </aside>
   );
