@@ -23,7 +23,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className={styles.description}>
-              Compramos todo tipo de vehículos en Almería. Pago inmediato en efectivo y recogida en menos de 24 horas.
+              Compramos todo tipo de vehículos. Pago inmediato en efectivo y recogida en menos de 24 horas.
             </p>
             <a
               href="https://wa.me/34610259725"
@@ -53,7 +53,7 @@ export default function Footer() {
             <div className={styles.contactInfo}>
               <div className={styles.contactItem}>
                 <span className={styles.contactIcon}><IconLocation size={18} color="#F5C518" /></span>
-                <p>Polígono Industrial<br />04738 Vícar, Almería</p>
+                <p>Blvr. Cdad. de Vícar, 75<br />04738 La Gangosa, Vícar, Almería</p>
               </div>
               <div className={styles.contactItem}>
                 <span className={styles.contactIcon}><IconPhone size={18} color="#F5C518" /></span>

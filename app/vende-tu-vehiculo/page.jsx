@@ -112,6 +112,46 @@ export default function VendeTuVehiculoPage() {
         </div>
       </section>
 
+      {/* Estados del vehículo */}
+      <section style={{ background: 'var(--bg-color)', padding: '0 0 5rem' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <div className="accent-line" style={{ margin: '0 auto 1.5rem' }} />
+            <h2 className="section-title">Compramos vehículos en diferentes estados</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '800px' }}>
+              En Autos 2022 valoramos tu vehículo aunque esté averiado, sin ITV, siniestrado, parado o destinado a desguace. Te damos una tasación clara, nos encargamos de la recogida y te ayudamos con los trámites necesarios.
+            </p>
+          </div>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '1.5rem',
+            maxWidth: '1000px',
+            margin: '0 auto'
+          }}>
+            {[
+              { text: 'Vehículos usados, averiados o siniestrados' },
+              { text: 'Coches sin ITV, parados o para desguace' },
+              { text: 'Recogida rápida según disponibilidad' },
+              { text: 'Gestión sencilla y trato directo' },
+            ].map((item, i) => (
+              <div key={i} style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                background: 'white',
+                padding: '1.5rem',
+                borderRadius: '0.75rem',
+                border: '1px solid var(--border-color)'
+              }}>
+                <span style={{ color: 'var(--primary)', fontSize: '1.5rem' }}>✓</span>
+                <span style={{ fontWeight: 600, color: 'var(--text-main)', lineHeight: 1.4 }}>{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Ventajas */}
       <section style={{ background: 'white', padding: '5rem 0' }}>
         <div className="container">

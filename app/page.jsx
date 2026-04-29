@@ -53,11 +53,11 @@ export default async function Home() {
             </div>
             <div className={styles.heroBullet}>
               <span className={styles.heroBulletIcon}>✔</span>
-              Con embargos, multas o impuestos atrasados
+              Compramos coches averiados, siniestrados o para desguace
             </div>
             <div className={styles.heroBullet}>
               <span className={styles.heroBulletIcon}>✔</span>
-              Máxima tasación garantizada
+              Con embargos, multas o impuestos atrasados
             </div>
           </div>
 
@@ -218,7 +218,7 @@ export default async function Home() {
                 ¿Tienes un vehículo que <span>quieres vender</span>?
               </h2>
               <p className={styles.sellBannerDesc}>
-                Compramos todo tipo de vehículos · Con embargos, multas o impuestos atrasados · Transporte incluido
+                Compramos coches, motos, furgonetas, vehículos averiados, siniestrados o para desguace · Transporte incluido · Gestión rápida
               </p>
             </div>
             <div className={styles.sellBannerActions}>
@@ -248,9 +248,7 @@ export default async function Home() {
               Compraventa de vehículos en Vícar y Almería
             </h2>
             <p>
-              En <strong>Autos 2022</strong> compramos todo tipo de vehículos en Almería y alrededores.
-              Coches, caravanas, motocicletas, tractores, remolques y barcos. También vehículos
-              con embargos, multas o impuestos atrasados — <strong>nosotros nos encargamos de las gestiones</strong>.
+              En <strong>Autos 2022</strong> compramos todo tipo de vehículos en Almería y alrededores: coches, motos, furgonetas, caravanas, tractores, remolques y barcos. También valoramos vehículos averiados, siniestrados, sin ITV, parados o destinados a desguace, además de vehículos con embargos, multas o impuestos atrasados.
             </p>
             <p>
               Nuestro servicio incluye la <strong>recogida del vehículo en menos de 24 horas</strong> y
