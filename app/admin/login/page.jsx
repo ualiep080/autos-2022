@@ -54,11 +54,11 @@ export default function AdminLoginPage() {
         <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: '1.5rem' }}>
             <label htmlFor="email" style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem' }}>Email</label>
-            <input type="email" id="email" name="email" defaultValue="admin@cochesvicar.com" required style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--border-color)', borderRadius: '0.5rem' }} />
+            <input type="email" id="email" name="email" autoComplete="username" required style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--border-color)', borderRadius: '0.5rem' }} />
           </div>
           <div style={{ marginBottom: '2rem' }}>
             <label htmlFor="password" style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem' }}>Contraseña</label>
-            <input type="password" id="password" name="password" defaultValue="admin123" required style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--border-color)', borderRadius: '0.5rem' }} />
+            <input type="password" id="password" name="password" autoComplete="current-password" required style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--border-color)', borderRadius: '0.5rem' }} />
           </div>
           <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={loading}>
             {loading ? 'Entrando...' : 'Acceder'}

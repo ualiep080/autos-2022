@@ -1,5 +1,7 @@
 import { prisma } from '@/lib/prisma';
 
+export const dynamic = 'force-dynamic';
+
 const BASE_URL = 'https://www.autos2022.es';
 
 export default async function sitemap() {
