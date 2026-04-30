@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import { markAsContacted, markAsNew } from './actions';
+import DeleteLeadButton from '@/components/DeleteLeadButton';
 
 export const metadata = {
   title: 'Contactos | Panel de Administración',
@@ -69,11 +70,13 @@ export default async function AdminLeadsPage() {
                       border: '1px solid #cbd5e1',
                       background: 'white',
                       cursor: 'pointer',
-                      display: 'block'
+                      display: 'block',
+                      width: '100%'
                     }}>
                       {lead.estado === 'nuevo' ? '✓ Marcar Atendido' : '↩ Marcar Nuevo'}
                     </button>
                   </form>
+                  <DeleteLeadButton leadId={lead.id} />
                 </td>
               </tr>
             ))}

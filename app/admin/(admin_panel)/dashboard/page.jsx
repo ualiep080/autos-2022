@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
+import AnalyticsChart from '@/components/AnalyticsChart';
 
 export const metadata = {
   title: 'Dashboard | Panel de Administración',
@@ -7,6 +8,53 @@ export const metadata = {
 
 export const revalidate = 60;
 export const dynamic = "force-dynamic";
+
+// Funciones para rellenar huecos en los datos
+const fillGapsDays = (data, days) => {
+  const map = new Map();
+  data.forEach(row => {
+    const d = new Date(row.day);
+    const label = `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth()+1).toString().padStart(2, '0')}`;
+    if (!map.has(label)) map.set(label, { label, visits: 0, clicks: 0 });
+    if (row.event === 'pageview') map.get(label).visits += Number(row.count);
+    if (row.event === 'click') map.get(label).clicks += Number(row.count);
+  });
+
+  const result = [];
+  for (let i = days - 1; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const label = `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth()+1).toString().padStart(2, '0')}`;
+    result.push(map.get(label) || { label, visits: 0, clicks: 0 });
+  }
+  return result;
+};
+
+const fillGapsMonths = (data) => {
+  const map = new Map();
+  const monthNames = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+  data.forEach(row => {
+    if (!row.month) return;
+    const parts = row.month.split('-');
+    const m = parseInt(parts[1], 10) - 1;
+    const label = monthNames[m];
+    // Asegurarse de agrupar por mes único en los últimos 12 meses
+    const uniqueKey = row.month; 
+    if (!map.has(uniqueKey)) map.set(uniqueKey, { label, visits: 0, clicks: 0 });
+    if (row.event === 'pageview') map.get(uniqueKey).visits += Number(row.count);
+    if (row.event === 'click') map.get(uniqueKey).clicks += Number(row.count);
+  });
+
+  const result = [];
+  for (let i = 11; i >= 0; i--) {
+    const d = new Date();
+    d.setMonth(d.getMonth() - i);
+    const uniqueKey = `${d.getFullYear()}-${(d.getMonth()+1).toString().padStart(2, '0')}`;
+    const label = monthNames[d.getMonth()];
+    result.push(map.get(uniqueKey) || { label, visits: 0, clicks: 0 });
+  }
+  return result;
+};
 
 export default async function DashboardPage() {
   const [
@@ -18,7 +66,9 @@ export default async function DashboardPage() {
     viewsToday,
     topPages,
     topClicks,
-    viewsLast7Days,
+    data7DaysRaw,
+    data30DaysRaw,
+    data12MonthsRaw
   ] = await Promise.all([
     prisma.vehicle.count(),
     prisma.vehicle.count({ where: { estado: 'disponible' } }),
@@ -31,7 +81,6 @@ export default async function DashboardPage() {
         createdAt: { gte: new Date(new Date().setHours(0, 0, 0, 0)) },
       },
     }),
-    // Top pages by visits
     prisma.pageView.groupBy({
       by: ['page'],
       where: { event: 'pageview' },
@@ -39,7 +88,6 @@ export default async function DashboardPage() {
       orderBy: { _count: { page: 'desc' } },
       take: 5,
     }),
-    // Top clicked elements
     prisma.pageView.groupBy({
       by: ['element'],
       where: { event: 'click', element: { not: null } },
@@ -47,16 +95,29 @@ export default async function DashboardPage() {
       orderBy: { _count: { element: 'desc' } },
       take: 5,
     }),
-    // Views per day last 7 days
     prisma.$queryRaw`
-      SELECT DATE("created_at") as day, COUNT(*) as count
+      SELECT DATE("created_at") as day, event, COUNT(*) as count
       FROM "PageView"
-      WHERE event = 'pageview'
-        AND "created_at" >= NOW() - INTERVAL '7 days'
-      GROUP BY DATE("created_at")
-      ORDER BY day ASC
+      WHERE "created_at" >= NOW() - INTERVAL '7 days'
+      GROUP BY DATE("created_at"), event
+    `,
+    prisma.$queryRaw`
+      SELECT DATE("created_at") as day, event, COUNT(*) as count
+      FROM "PageView"
+      WHERE "created_at" >= NOW() - INTERVAL '30 days'
+      GROUP BY DATE("created_at"), event
+    `,
+    prisma.$queryRaw`
+      SELECT TO_CHAR("created_at", 'YYYY-MM') as month, event, COUNT(*) as count
+      FROM "PageView"
+      WHERE "created_at" >= NOW() - INTERVAL '12 months'
+      GROUP BY TO_CHAR("created_at", 'YYYY-MM'), event
     `,
   ]);
+
+  const data7Days = fillGapsDays(data7DaysRaw || [], 7);
+  const data30Days = fillGapsDays(data30DaysRaw || [], 30);
+  const data12Months = fillGapsMonths(data12MonthsRaw || []);
 
   const statCard = (label, value, color = 'var(--text-main)', subtitle = '') => (
     <div style={{
@@ -95,6 +156,8 @@ export default async function DashboardPage() {
         {statCard('Visitas Totales', totalViews ?? 0, '#1a1a1a')}
         {statCard('Visitas Hoy', viewsToday ?? 0, '#F5C518')}
       </div>
+
+      <AnalyticsChart data7Days={data7Days} data30Days={data30Days} data12Months={data12Months} />
 
       {/* ===== Tablas analytics ===== */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>

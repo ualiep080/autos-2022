@@ -28,3 +28,19 @@ export async function markAsNew(formData) {
   revalidatePath('/admin/leads');
   revalidatePath('/admin/dashboard');
 }
+
+export async function deleteLead(formData) {
+  const id = formData.get('id');
+  if (!id) return;
+  
+  try {
+    await prisma.lead.delete({
+      where: { id }
+    });
+    
+    revalidatePath('/admin/leads');
+    revalidatePath('/admin/dashboard');
+  } catch (error) {
+    console.error('Error deleting lead:', error);
+  }
+}
