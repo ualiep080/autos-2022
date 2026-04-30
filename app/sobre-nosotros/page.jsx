@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { IconCheckCircle } from '@/components/Icons';
 
 export const metadata = {
   title: 'Sobre Autos 2022 | Compraventa de vehículos en Almería',
@@ -31,19 +32,19 @@ export default function SobreNosotrosPage() {
           <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Nuestro Compromiso</h2>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <li style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-              <span style={{ color: 'var(--primary)', fontSize: '1.5rem', lineHeight: 1, flexShrink: 0 }}>✓</span>
+              <span style={{ flexShrink: 0, marginTop: '2px' }}><IconCheckCircle size={20} color="var(--primary)" /></span>
               <span>Transparencia total en el kilometraje e historial de cada coche.</span>
             </li>
             <li style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-              <span style={{ color: 'var(--primary)', fontSize: '1.5rem', lineHeight: 1, flexShrink: 0 }}>✓</span>
+              <span style={{ flexShrink: 0, marginTop: '2px' }}><IconCheckCircle size={20} color="var(--primary)" /></span>
               <span>Posibilidad de revisión en talleres de confianza.</span>
             </li>
             <li style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-              <span style={{ color: 'var(--primary)', fontSize: '1.5rem', lineHeight: 1, flexShrink: 0 }}>✓</span>
+              <span style={{ flexShrink: 0, marginTop: '2px' }}><IconCheckCircle size={20} color="var(--primary)" /></span>
               <span>Información clara sobre el estado, documentación y condiciones del vehículo.</span>
             </li>
             <li style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-              <span style={{ color: 'var(--primary)', fontSize: '1.5rem', lineHeight: 1, flexShrink: 0 }}>✓</span>
+              <span style={{ flexShrink: 0, marginTop: '2px' }}><IconCheckCircle size={20} color="var(--primary)" /></span>
               <span>Atención 100% personalizada por parte de nuestro equipo.</span>
             </li>
           </ul>

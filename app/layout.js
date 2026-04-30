@@ -1,7 +1,14 @@
+import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import RootLayoutUI from '@/components/RootLayoutUI';
 import JsonLd from '@/components/JsonLd';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 const BASE_URL = 'https://www.autos2022.es';
 
@@ -72,7 +79,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es">
+    <html lang="es" className={inter.className}>
       <body>
         <JsonLd />
         <RootLayoutUI>

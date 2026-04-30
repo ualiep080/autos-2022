@@ -8,12 +8,28 @@
   flex-direction: column;
   height: 100%;
   border: 1px solid var(--border-color);
+  position: relative;
 }
 
 .card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
+  border-color: var(--primary);
 }
+
+.fullCardLink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.fullCardLink:focus-visible::after {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-lg);
+}
+
 
 .imageWrapper {
   position: relative;
@@ -66,10 +82,13 @@
 }
 
 .price {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
-  color: var(--text-main);
-  margin-bottom: 1.25rem;
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
 }
 
 .features {
@@ -100,6 +119,8 @@
   grid-template-columns: 1fr;
   gap: 0.75rem;
   margin-top: auto;
+  position: relative;
+  z-index: 2;
 }
 
 .actions a, .actions button {

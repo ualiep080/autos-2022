@@ -2,6 +2,8 @@ import { prisma } from '@/lib/prisma';
 import VehicleCard from '@/components/VehicleCard';
 import styles from './page.module.css';
 import Link from 'next/link';
+import { IconFilter, IconCar, IconFuel, IconEuro } from '@/components/Icons';
+
 
 export const metadata = {
   title: 'Coches en stock en Vícar, Almería',
@@ -43,11 +45,20 @@ export default async function CatalogPage({ searchParams }) {
         <div className={styles.layout}>
           <aside className={styles.sidebar}>
             <form action="/coches-en-stock" method="GET">
-              <h3 style={{ marginBottom: '1.5rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.5rem' }}>Filtros</h3>
+              <div className={styles.sidebarHeader}>
+                <h3 className={styles.sidebarTitle}>
+                  <IconFilter size={20} color="var(--primary-dark)" /> Filtros
+                </h3>
+                <p className={styles.sidebarSubtitle}>
+                  Encuentra el vehículo que mejor encaja contigo
+                </p>
+              </div>
               
               <div className={styles.filterGroup}>
-                <h4>Marca</h4>
-                <select name="marca" defaultValue={marca || ""}>
+                <label className={styles.filterLabel}>
+                  <IconCar size={16} color="var(--text-muted)" /> Marca
+                </label>
+                <select name="marca" defaultValue={marca || ""} className={styles.filterSelect}>
                   <option value="">Todas las marcas</option>
                   {distinctMarcas.map((m) => (
                     <option key={m.marca} value={m.marca}>{m.marca}</option>
@@ -56,8 +67,10 @@ export default async function CatalogPage({ searchParams }) {
               </div>
 
               <div className={styles.filterGroup}>
-                <h4>Combustible</h4>
-                <select name="combustible" defaultValue={combustible || ""}>
+                <label className={styles.filterLabel}>
+                  <IconFuel size={16} color="var(--text-muted)" /> Combustible
+                </label>
+                <select name="combustible" defaultValue={combustible || ""} className={styles.filterSelect}>
                   <option value="">Todos</option>
                   <option value="Gasolina">Gasolina</option>
                   <option value="Diésel">Diésel</option>
@@ -67,9 +80,12 @@ export default async function CatalogPage({ searchParams }) {
               </div>
 
               <div className={styles.filterGroup}>
-                <h4>Precio Máximo</h4>
-                <select name="precio_max" defaultValue={precio_max || ""}>
+                <label className={styles.filterLabel}>
+                  <IconEuro size={16} color="var(--text-muted)" /> Precio Máximo
+                </label>
+                <select name="precio_max" defaultValue={precio_max || ""} className={styles.filterSelect}>
                   <option value="">Sin límite</option>
+                  <option value="5000">Hasta 5.000€</option>
                   <option value="10000">Hasta 10.000€</option>
                   <option value="15000">Hasta 15.000€</option>
                   <option value="20000">Hasta 20.000€</option>
@@ -78,7 +94,7 @@ export default async function CatalogPage({ searchParams }) {
                 </select>
               </div>
 
-              <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>Aplicar filtros</button>
+              <button type="submit" className={`btn btn-primary ${styles.filterBtn}`}>Aplicar filtros</button>
               
               {(marca || combustible || precio_max) && (
                 <Link href="/coches-en-stock" className={styles.clearFilters}>Limpiar filtros</Link>
@@ -87,8 +103,8 @@ export default async function CatalogPage({ searchParams }) {
           </aside>
 
           <main>
-            <div style={{ marginBottom: '1rem', color: 'var(--text-muted)' }}>
-              Mostrando {cars.length} vehículo{cars.length !== 1 ? 's' : ''}
+            <div className={styles.resultsHeader}>
+              <span>Mostrando <strong>{cars.length}</strong> vehículo{cars.length !== 1 ? 's' : ''}</span>
             </div>
 
             <div className={styles.grid}>
@@ -98,13 +114,14 @@ export default async function CatalogPage({ searchParams }) {
             </div>
 
             {cars.length === 0 && (
-              <div style={{ padding: '4rem 2rem', textAlign: 'center', backgroundColor: 'white', borderRadius: '1rem', border: '1px solid var(--border-color)' }}>
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>No se encontraron vehículos</h3>
-                <p style={{ color: 'var(--text-muted)' }}>No hay coches que coincidan con los filtros seleccionados.</p>
+              <div className={styles.emptyState}>
+                <h3 className={styles.emptyTitle}>No se encontraron vehículos</h3>
+                <p className={styles.emptyDesc}>No hay coches que coincidan con los filtros seleccionados.</p>
                 <Link href="/coches-en-stock" className="btn btn-outline" style={{ marginTop: '1.5rem' }}>Eliminar filtros</Link>
               </div>
             )}
           </main>
+
         </div>
       </div>
     </div>

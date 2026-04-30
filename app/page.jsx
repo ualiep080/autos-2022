@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { prisma } from '@/lib/prisma';
 import VehicleCard from '@/components/VehicleCard';
 import styles from './page.module.css';
@@ -9,6 +10,10 @@ import {
   IconShield,
   IconStar,
   IconPhone,
+  IconClock,
+  IconCar,
+  IconMessageCircle,
+  IconFileCheck,
 } from '@/components/Icons';
 
 export const metadata = {
@@ -30,9 +35,19 @@ export default async function Home() {
     <div>
       {/* ===== HERO ===== */}
       <section className={styles.hero}>
-        <div className="container">
+        <Image
+          src="/hero-bg.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          quality={75}
+          className={styles.heroImage}
+        />
+        <div className={styles.heroOverlay} />
+        <div className={`container ${styles.heroContent}`}>
           <div className={styles.heroBadge}>
-            <span>⭐</span> Compraventa de vehículos — Vícar, Almería
+            <IconStar size={16} /> Compraventa de vehículos — Vícar, Almería
           </div>
 
           <h1 className={styles.heroTitle}>
@@ -47,17 +62,29 @@ export default async function Home() {
           </p>
 
           <div className={styles.heroBullets}>
-            <div className={styles.heroBullet}>
-              <span className={styles.heroBulletIcon}>✔</span>
-              Recogida en menos de 24&nbsp;horas
+            <div className={styles.heroBulletCard}>
+              <span className={styles.heroBulletCardIcon}>
+                <IconClock size={22} color="#F5C518" />
+              </span>
+              <span className={styles.heroBulletCardText}>
+                Recogida en menos de 24&nbsp;horas
+              </span>
             </div>
-            <div className={styles.heroBullet}>
-              <span className={styles.heroBulletIcon}>✔</span>
-              Compramos coches averiados, siniestrados o para desguace
+            <div className={styles.heroBulletCard}>
+              <span className={styles.heroBulletCardIcon}>
+                <IconCar size={22} color="#F5C518" />
+              </span>
+              <span className={styles.heroBulletCardText}>
+                Averiados, siniestrados o para desguace
+              </span>
             </div>
-            <div className={styles.heroBullet}>
-              <span className={styles.heroBulletIcon}>✔</span>
-              Con embargos, multas o impuestos atrasados
+            <div className={styles.heroBulletCard}>
+              <span className={styles.heroBulletCardIcon}>
+                <IconFileCheck size={22} color="#F5C518" />
+              </span>
+              <span className={styles.heroBulletCardText}>
+                Embargos, multas o impuestos atrasados
+              </span>
             </div>
           </div>
 
@@ -69,14 +96,14 @@ export default async function Home() {
               rel="noopener noreferrer"
               id="hero-whatsapp-btn"
             >
-              📲 Solicitar tasación gratis
+              <IconMessageCircle size={20} /> Solicitar tasación gratis
             </a>
             <a
               href="tel:+34610259725"
               className="btn btn-secondary"
               id="hero-call-btn"
             >
-              📞 Llamar ahora
+              <IconPhone size={20} /> Llamar ahora
             </a>
           </div>
         </div>
@@ -229,7 +256,7 @@ export default async function Home() {
                 rel="noopener noreferrer"
                 id="sell-banner-whatsapp-btn"
               >
-                📲 WhatsApp
+                <IconMessageCircle size={20} /> WhatsApp
               </a>
               <Link href="/vende-tu-vehiculo" className="btn btn-outline-gold" id="sell-banner-link-btn">
                 Más información →

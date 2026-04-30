@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { IconLocation, IconPhone, IconClock } from './Icons';
+import { IconLocation, IconPhone, IconClock, IconMessageCircle } from './Icons';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -32,7 +32,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               id="footer-whatsapp-btn"
             >
-              📲 Solicitar tasación gratis
+              <IconMessageCircle size={16} /> Solicitar tasación gratis
             </a>
           </div>
 

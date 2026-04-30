@@ -1,36 +1,59 @@
 /* ===== HERO ===== */
 .hero {
-  background: linear-gradient(rgba(15, 15, 15, 0.82), rgba(26, 26, 26, 0.92)),
-              url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+  position: relative;
   color: white;
   padding: 7rem 0 5rem;
   text-align: center;
+  overflow: hidden;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(15, 15, 15, 0.78), rgba(26, 26, 26, 0.88));
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
 }
 
 .heroBadge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(245, 197, 24, 0.15);
-  border: 1px solid rgba(245, 197, 24, 0.4);
+  background: rgba(245, 197, 24, 0.12);
+  border: 1px solid rgba(245, 197, 24, 0.35);
   color: #F5C518;
-  padding: 0.4rem 1rem;
+  padding: 0.45rem 1.15rem;
   border-radius: 999px;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   max-width: 100%;
   text-align: center;
+  backdrop-filter: blur(4px);
 }
 
 .heroTitle {
   font-size: 3.75rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  line-height: 1.15;
+  line-height: 1.1;
   color: white;
+  letter-spacing: -0.03em;
 }
 
 .heroTitleAccent {
@@ -38,34 +61,56 @@
 }
 
 .heroSubtitle {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: #d1d5db;
   max-width: 620px;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 2rem;
   line-height: 1.7;
 }
 
+/* ===== HERO BENEFIT CARDS ===== */
 .heroBullets {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 780px;
+  margin: 0 auto 2.5rem;
 }
 
-.heroBullet {
+.heroBulletCard {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.975rem;
-  font-weight: 600;
-  color: white;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(245, 197, 24, 0.2);
+  border-radius: 0.75rem;
+  padding: 1rem 1.15rem;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
 
-.heroBulletIcon {
-  color: #F5C518;
-  font-size: 1.1rem;
+.heroBulletCard:hover {
+  border-color: rgba(245, 197, 24, 0.45);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.heroBulletCardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: rgba(245, 197, 24, 0.12);
+  border-radius: 50%;
   flex-shrink: 0;
+}
+
+.heroBulletCardText {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  line-height: 1.35;
+  text-align: left;
 }
 
 .heroActions {
@@ -238,6 +283,7 @@
 @media (max-width: 768px) {
   .hero {
     padding: 4rem 0 3rem;
+    min-height: auto;
   }
   .heroTitle {
     font-size: 2.25rem;
@@ -254,9 +300,19 @@
     justify-content: center;
   }
   .heroBullets {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
+    max-width: 400px;
     gap: 0.75rem;
+  }
+  .heroBulletCard {
+    padding: 0.85rem 1rem;
+  }
+  .heroBulletCardIcon {
+    width: 36px;
+    height: 36px;
+  }
+  .heroBulletCardText {
+    font-size: 0.85rem;
   }
   .searchBox {
     margin-top: -2rem;
@@ -290,18 +346,25 @@
   }
   .heroTitle {
     font-size: 1.875rem;
-    line-height: 1.2;
+    line-height: 1.15;
   }
   .heroSubtitle {
     font-size: 0.95rem;
   }
   .heroBadge {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     padding: 0.35rem 0.75rem;
   }
-  .heroBullet {
-    font-size: 0.9rem;
-    text-align: left;
+  .heroBulletCard {
+    padding: 0.75rem 0.875rem;
+    gap: 0.6rem;
+  }
+  .heroBulletCardIcon {
+    width: 32px;
+    height: 32px;
+  }
+  .heroBulletCardText {
+    font-size: 0.8rem;
   }
   .searchBox {
     margin-top: -1.5rem;

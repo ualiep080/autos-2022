@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { IconCookie } from './Icons';
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
@@ -44,15 +45,17 @@ export default function CookieBanner() {
         boxShadow: '0 20px 50px rgba(0,0,0,0.35)',
         zIndex: 9998,
         border: '1px solid rgba(245,197,24,0.25)',
-        fontFamily: 'Inter, sans-serif',
         animation: 'slideInUp 0.4s ease',
       }}
     >
-      <p style={{ fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.25rem', color: '#d1d5db' }}>
-        🍪 Usamos cookies para analizar el tráfico y mejorar tu experiencia.{' '}
-        <Link href="/cookies" style={{ color: '#F5C518', fontWeight: 600 }}>
-          Más información
-        </Link>
+      <p style={{ fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.25rem', color: '#d1d5db', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+        <span style={{ flexShrink: 0, marginTop: '2px' }}><IconCookie size={18} color="#F5C518" /></span>
+        <span>
+          Usamos cookies para analizar el tráfico y mejorar tu experiencia.{' '}
+          <Link href="/cookies" style={{ color: '#F5C518', fontWeight: 600 }}>
+            Más información
+          </Link>
+        </span>
       </p>
       <div style={{ display: 'flex', gap: '0.75rem' }}>
         <button
@@ -68,7 +71,6 @@ export default function CookieBanner() {
             fontWeight: 700,
             fontSize: '0.875rem',
             cursor: 'pointer',
-            fontFamily: 'Inter, sans-serif',
           }}
         >
           Aceptar
@@ -86,7 +88,6 @@ export default function CookieBanner() {
             fontWeight: 600,
             fontSize: '0.875rem',
             cursor: 'pointer',
-            fontFamily: 'Inter, sans-serif',
           }}
         >
           Solo esenciales

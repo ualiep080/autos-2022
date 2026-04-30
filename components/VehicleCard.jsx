@@ -1,5 +1,11 @@
 import Link from 'next/link';
 import styles from './VehicleCard.module.css';
+import {
+  IconCalendar,
+  IconRoad,
+  IconFuel,
+  IconGear,
+} from './Icons';
 
 export default function VehicleCard({ vehicle }) {
   const formatPrice = (price) => {
@@ -29,36 +35,40 @@ export default function VehicleCard({ vehicle }) {
       </div>
       
       <div className={styles.content}>
-        <h3 className={styles.title}>{vehicle.marca} {vehicle.modelo}</h3>
+        <h3 className={styles.title}>
+          <Link href={`/coches-en-stock/${vehicle.slug}`} className={styles.fullCardLink}>
+            {vehicle.marca} {vehicle.modelo}
+          </Link>
+        </h3>
         <p className={styles.version}>{vehicle.version}</p>
         
         <div className={styles.price}>{formatPrice(vehicle.precio)}</div>
         
         <div className={styles.features}>
           <div className={styles.feature}>
-            <span className={styles.featureIcon}>📅</span>
+            <span className={styles.featureIcon}><IconCalendar size={16} color="var(--primary-dark)" /></span>
             <span>{vehicle.year}</span>
           </div>
           <div className={styles.feature}>
-            <span className={styles.featureIcon}>🛣️</span>
+            <span className={styles.featureIcon}><IconRoad size={16} color="var(--primary-dark)" /></span>
             <span>{vehicle.kilometros.toLocaleString()} km</span>
           </div>
           <div className={styles.feature}>
-            <span className={styles.featureIcon}>⛽</span>
+            <span className={styles.featureIcon}><IconFuel size={16} color="var(--primary-dark)" /></span>
             <span>{vehicle.combustible}</span>
           </div>
           <div className={styles.feature}>
-            <span className={styles.featureIcon}>⚙️</span>
+            <span className={styles.featureIcon}><IconGear size={16} color="var(--primary-dark)" /></span>
             <span>{vehicle.cambio}</span>
           </div>
         </div>
 
         <div className={styles.actions}>
-          <Link href={`/coches-en-stock/${vehicle.slug}`} className="btn btn-primary">
+          <Link href={`/coches-en-stock/${vehicle.slug}`} className="btn btn-primary" tabIndex={-1} aria-hidden="true">
             Ver detalles
           </Link>
           <a 
-            href={`https://wa.me/34600000000?text=Hola,%20me%20interesa%20el%20${vehicle.marca}%20${vehicle.modelo}`}
+            href={`https://wa.me/34610259725?text=Hola,%20me%20interesa%20el%20${vehicle.marca}%20${vehicle.modelo}`}
             className="btn btn-outline"
             target="_blank"
             rel="noopener noreferrer"
@@ -70,3 +80,4 @@ export default function VehicleCard({ vehicle }) {
     </div>
   );
 }
+

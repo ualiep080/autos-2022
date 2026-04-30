@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { IconMenu, IconClose, IconWhatsapp } from './Icons';
+import { IconMenu, IconClose, IconWhatsapp, IconMessageCircle, IconPhone } from './Icons';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
@@ -50,7 +50,7 @@ export default function Navbar() {
                   onClick={closeMenu}
                   id="navbar-mobile-whatsapp-btn"
                 >
-                  📲 WhatsApp
+                  <IconMessageCircle size={18} /> WhatsApp
                 </a>
                 <a
                   href="tel:+34610259725"
@@ -58,7 +58,7 @@ export default function Navbar() {
                   onClick={closeMenu}
                   id="navbar-mobile-call-btn"
                 >
-                  📞 Llamar
+                  <IconPhone size={18} /> Llamar
                 </a>
               </div>
             )}
@@ -73,7 +73,7 @@ export default function Navbar() {
               rel="noopener noreferrer"
               id="navbar-whatsapp-btn"
             >
-              📲 Solicitar tasación
+              <IconMessageCircle size={18} /> Solicitar tasación
             </a>
           </div>
 
