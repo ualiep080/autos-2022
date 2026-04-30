@@ -21,6 +21,9 @@ export async function saveVehicleAction(formData, id, isNew) {
     const potenciaRaw = formData.get('potencia');
     const colorRaw = formData.get('color');
     const etiquetaRaw = formData.get('etiquetaAmbiental');
+    
+    // El checkbox envía 'on' si está marcado
+    const destacado = formData.get('destacado') === 'on' || formData.get('destacado') === 'true';
 
     const descripcion = descripcionRaw?.trim() || null;
     const potencia = potenciaRaw ? parseInt(potenciaRaw) || null : null;
@@ -29,6 +32,27 @@ export async function saveVehicleAction(formData, id, isNew) {
 
     // Base slug generated from brand & model
     const slug = `${marca.toLowerCase()}-${modelo.toLowerCase().replace(/ /g, '-')}-${Date.now()}`;
+
+    // Lógica de destacados
+    let finalDestacado = destacado;
+    if (estado === 'vendido') {
+      finalDestacado = false;
+    }
+
+    if (finalDestacado) {
+      // Verificar si ya hay 3 destacados (excluyendo el actual si es edición)
+      const query = {
+        destacado: true,
+        estado: { not: 'vendido' }
+      };
+      if (!isNew && id) {
+        query.id = { not: id };
+      }
+      const destacadosCount = await prisma.vehicle.count({ where: query });
+      if (destacadosCount >= 3) {
+        return { error: 'Solo puedes mostrar hasta 3 vehículos destacados en la home.' };
+      }
+    }
 
     const data = {
       marca,
@@ -44,6 +68,7 @@ export async function saveVehicleAction(formData, id, isNew) {
       potencia,
       color,
       etiquetaAmbiental,
+      destacado: finalDestacado,
       slug: isNew ? slug : undefined,
     };
 

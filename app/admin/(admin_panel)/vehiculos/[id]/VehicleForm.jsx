@@ -177,6 +177,21 @@ export default function VehicleForm({ vehicle, isNew }) {
         <p style={{ fontSize:'0.75rem', color:'#64748b', marginTop:'0.25rem' }}>Puedes seleccionar varias imágenes a la vez. JPG y PNG soportados.</p>
       </div>
 
+      {/* Vehículo Destacado */}
+      <div style={{ padding: '1rem', border: '1px solid #e2e8f0', borderRadius: '0.5rem', backgroundColor: '#f8fafc', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <input 
+          type="checkbox" 
+          name="destacado" 
+          id="destacado"
+          defaultChecked={vehicle?.destacado || false}
+          style={{ width: '1.25rem', height: '1.25rem', cursor: 'pointer' }}
+        />
+        <div>
+          <label htmlFor="destacado" style={{ fontWeight: '600', cursor: 'pointer', display: 'block', marginBottom: '0.25rem' }}>Mostrar en la home</label>
+          <span style={{ fontSize: '0.875rem', color: '#64748b' }}>Selecciona este vehículo para mostrarlo como destacado en la página principal. Máximo 3 vehículos.</span>
+        </div>
+      </div>
+
       {/* Acciones */}
       <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
         <button type="submit" disabled={loading} className="btn btn-primary" style={{ width: '200px' }}>

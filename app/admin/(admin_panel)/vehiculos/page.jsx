@@ -39,7 +39,14 @@ export default async function AdminVehiclesPage() {
             {cars.map(car => (
               <tr key={car.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
                 <td style={{ padding: '1rem' }}>
-                  <div style={{ fontWeight: '600' }}>{car.marca} {car.modelo}</div>
+                  <div style={{ fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    {car.marca} {car.modelo}
+                    {car.destacado && (
+                      <span style={{ fontSize: '0.7rem', backgroundColor: '#fef3c7', color: '#d97706', padding: '0.1rem 0.4rem', borderRadius: '0.25rem', fontWeight: 'bold', border: '1px solid #fde68a' }}>
+                        Destacado
+                      </span>
+                    )}
+                  </div>
                   <div style={{ fontSize: '0.875rem', color: '#64748b' }}>{car.year} | {car.kilometros} km</div>
                 </td>
                 <td style={{ padding: '1rem', color: '#475569' }}>{car.version}</td>

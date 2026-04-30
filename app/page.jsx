@@ -25,10 +25,14 @@ export const revalidate = 60;
 
 export default async function Home() {
   const destacadas = await prisma.vehicle.findMany({
-    where: { destacado: true, visible: true },
+    where: { 
+      destacado: true, 
+      visible: true,
+      estado: { not: 'vendido' }
+    },
     include: { images: true },
-    orderBy: { fechaPublicacion: 'desc' },
-    take: 6,
+    orderBy: { fechaActualizacion: 'desc' },
+    take: 3,
   });
 
   return (
