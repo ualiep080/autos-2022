@@ -1,28 +1,35 @@
 import { NextResponse } from 'next/server';
-import { loginDemoAdmin } from '@/lib/auth';
+import bcrypt from 'bcryptjs';
+import { loginAdmin } from '@/lib/auth';
 
 export async function POST(request) {
   try {
     const { email, password } = await request.json();
 
     const envEmail = process.env.ADMIN_EMAIL;
-    const envPassword = process.env.ADMIN_PASSWORD;
+    const envPasswordHash = process.env.ADMIN_PASSWORD_HASH;
 
-    if (!envEmail || !envPassword) {
-      console.error('Falta configuración de variables de entorno ADMIN_EMAIL o ADMIN_PASSWORD');
+    if (!envEmail || !envPasswordHash) {
+      console.error('Faltan variables de entorno ADMIN_EMAIL o ADMIN_PASSWORD_HASH');
       return NextResponse.json({ error: 'Configuración del servidor incompleta' }, { status: 500 });
     }
 
-    if (email !== envEmail || password !== envPassword) {
+    if (!email || !password) {
       return NextResponse.json({ error: 'Credenciales inválidas' }, { status: 401 });
     }
 
-    // Generate JWT cookie using a generic admin ID since we no longer rely on DB for auth
-    await loginDemoAdmin('admin-env');
+    const emailMatch = email === envEmail;
+    const passwordMatch = await bcrypt.compare(password, envPasswordHash);
+
+    if (!emailMatch || !passwordMatch) {
+      return NextResponse.json({ error: 'Credenciales inválidas' }, { status: 401 });
+    }
+
+    await loginAdmin('admin-env');
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Login error:', error);
+    console.error('Login error:', error.message);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
