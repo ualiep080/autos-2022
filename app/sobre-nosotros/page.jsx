@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { IconCheckCircle } from '@/components/Icons';
 
 export const metadata = {
-  title: 'Sobre Autos 2022 | Compraventa de vehículos en Almería',
-  description: 'Conoce Autos 2022, empresa de compraventa de vehículos en Vícar, Almería, con trato cercano y atención personalizada.',
+  title: 'Sobre Nosotros',
+  description: 'Transparencia y confianza por bandera · Trato directo y honesto · Especialistas en compraventa de vehículos en Almería.',
 };
 
 export default function SobreNosotrosPage() {

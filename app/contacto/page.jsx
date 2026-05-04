@@ -8,8 +8,8 @@ import {
 } from '@/components/Icons';
 
 export const metadata = {
-  title: 'Contacto y ubicación | Autos 2022',
-  description: 'Contacta con Autos 2022 en Vícar, Almería. Atención por teléfono, WhatsApp y formulario de contacto.',
+  title: 'Contacto y Ubicación',
+  description: 'Atención personalizada al cliente · Llámanos o envíanos un WhatsApp · Visita nuestra exposición en Vícar, Almería.',
 };
 
 export default function ContactoPage() {

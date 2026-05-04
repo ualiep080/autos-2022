@@ -13,8 +13,8 @@ import {
 } from '@/components/Icons';
 
 export const metadata = {
-  title: 'Vende tu coche en Almería | Autos 2022',
-  description: 'Compramos y valoramos vehículos usados, averiados, sin ITV, siniestrados o para desguace en Almería. Recogida rápida según disponibilidad y trato directo.',
+  title: 'Vende tu Vehículo',
+  description: 'Máxima tasación · Pago en efectivo inmediato · Compramos vehículos usados, averiados o con embargos en Almería.',
 };
 
 const ventajas = [

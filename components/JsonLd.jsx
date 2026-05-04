@@ -57,10 +57,51 @@ export default function JsonLd() {
     paymentAccepted: 'Cash',
   };
 
+  const sitelinksSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'itemListElement': [
+      {
+        '@type': 'SiteNavigationElement',
+        'position': 1,
+        'name': 'Coches en Stock',
+        'description': 'Vehículos de ocasión · Revisados y garantizados · Encuentra tu próximo coche al mejor precio en Almería.',
+        'url': 'https://www.autos2022.es/coches-en-stock'
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        'position': 2,
+        'name': 'Vende tu Vehículo',
+        'description': 'Máxima tasación · Pago en efectivo inmediato · Compramos vehículos usados, averiados o con embargos en Almería.',
+        'url': 'https://www.autos2022.es/vende-tu-vehiculo'
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        'position': 3,
+        'name': 'Sobre Nosotros',
+        'description': 'Transparencia y confianza por bandera · Trato directo y honesto · Especialistas en compraventa de vehículos en Almería.',
+        'url': 'https://www.autos2022.es/sobre-nosotros'
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        'position': 4,
+        'name': 'Contacto y Ubicación',
+        'description': 'Atención personalizada al cliente · Llámanos o envíanos un WhatsApp · Visita nuestra exposición en Vícar, Almería.',
+        'url': 'https://www.autos2022.es/contacto'
+      }
+    ]
+  };
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(sitelinksSchema) }}
+      />
+    </>
   );
 }

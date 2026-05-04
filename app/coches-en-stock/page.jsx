@@ -6,8 +6,8 @@ import { IconFilter, IconCar, IconFuel, IconEuro } from '@/components/Icons';
 
 
 export const metadata = {
-  title: 'Coches en stock en Vícar, Almería',
-  description: 'Consulta los vehículos disponibles en Autos 2022. Coches de ocasión en Vícar, Almería, con información clara y contacto directo.',
+  title: 'Coches en Stock',
+  description: 'Vehículos de ocasión · Revisados y garantizados · Encuentra tu próximo coche al mejor precio en Almería.',
 };
 
 export default async function CatalogPage({ searchParams }) {
