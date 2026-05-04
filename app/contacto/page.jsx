@@ -9,7 +9,31 @@ import {
 
 export const metadata = {
   title: 'Contacto y Ubicación',
-  description: 'Atención personalizada al cliente · Llámanos o envíanos un WhatsApp · Visita nuestra exposición en Vícar, Almería.',
+  description:
+    'Contacta con Autos 2022 en Vícar, Almería. Llámanos o escríbenos por WhatsApp para una tasación gratuita de tu vehículo. Atención directa y personalizada.',
+  alternates: { canonical: '/contacto' },
+  openGraph: {
+    type: 'website',
+    url: 'https://www.autos2022.es/contacto',
+    title: 'Contacto y Ubicación | Autos 2022',
+    description:
+      'Contacta con Autos 2022 en Vícar, Almería. Llámanos o escríbenos por WhatsApp para una tasación gratuita de tu vehículo.',
+    images: [
+      {
+        url: '/hero-bg.webp',
+        width: 1920,
+        height: 1080,
+        alt: 'Contacto — Autos 2022, Vícar, Almería',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contacto y Ubicación | Autos 2022',
+    description:
+      'Contacta con Autos 2022 en Vícar, Almería. Tasación gratuita de tu vehículo.',
+    images: ['/hero-bg.webp'],
+  },
 };
 
 export default function ContactoPage() {

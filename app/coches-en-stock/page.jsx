@@ -7,7 +7,31 @@ import { IconFilter, IconCar, IconFuel, IconEuro } from '@/components/Icons';
 
 export const metadata = {
   title: 'Coches en Stock',
-  description: 'Vehículos de ocasión · Revisados y garantizados · Encuentra tu próximo coche al mejor precio en Almería.',
+  description:
+    'Vehículos de ocasión revisados y garantizados. Encuentra tu próximo coche al mejor precio en Vícar, Almería.',
+  alternates: { canonical: '/coches-en-stock' },
+  openGraph: {
+    type: 'website',
+    url: 'https://www.autos2022.es/coches-en-stock',
+    title: 'Coches en Stock | Autos 2022',
+    description:
+      'Vehículos de ocasión revisados y garantizados. Encuentra tu próximo coche al mejor precio en Vícar, Almería.',
+    images: [
+      {
+        url: '/hero-bg.webp',
+        width: 1920,
+        height: 1080,
+        alt: 'Coches en stock — Autos 2022, Vícar, Almería',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Coches en Stock | Autos 2022',
+    description:
+      'Vehículos de ocasión revisados y garantizados en Vícar, Almería.',
+    images: ['/hero-bg.webp'],
+  },
 };
 
 export default async function CatalogPage({ searchParams }) {

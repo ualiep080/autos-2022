@@ -14,7 +14,31 @@ import {
 
 export const metadata = {
   title: 'Vende tu Vehículo',
-  description: 'Máxima tasación · Pago en efectivo inmediato · Compramos vehículos usados, averiados o con embargos en Almería.',
+  description:
+    'Compramos todo tipo de vehículos en Almería: usados, averiados, sin ITV o con embargos. Pago inmediato en efectivo y recogida en menos de 24h. Consulta sin compromiso.',
+  alternates: { canonical: '/vende-tu-vehiculo' },
+  openGraph: {
+    type: 'website',
+    url: 'https://www.autos2022.es/vende-tu-vehiculo',
+    title: 'Vende tu Vehículo | Autos 2022',
+    description:
+      'Compramos todo tipo de vehículos en Almería: usados, averiados, sin ITV o con embargos. Pago inmediato en efectivo y recogida en menos de 24h.',
+    images: [
+      {
+        url: '/vende-hero-bg.webp',
+        width: 1920,
+        height: 1080,
+        alt: 'Vende tu vehículo — Autos 2022, Vícar, Almería',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Vende tu Vehículo | Autos 2022',
+    description:
+      'Compramos todo tipo de vehículos en Almería. Pago inmediato, recogida en 24h.',
+    images: ['/vende-hero-bg.webp'],
+  },
 };
 
 const ventajas = [

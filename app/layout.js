@@ -12,16 +12,20 @@ const inter = Inter({
 
 const BASE_URL = 'https://www.autos2022.es';
 
+const OG_TITLE = 'Autos 2022 | Compraventa de coches en Vícar, Almería';
+const OG_DESCRIPTION =
+  'Compra y venta de vehículos de ocasión en Vícar, Almería. Valoramos coches usados, averiados o sin ITV bajo valoración previa. Atención directa por teléfono y WhatsApp.';
+const OG_IMAGE = '/hero-bg.webp';
+
 export const metadata = {
   metadataBase: new URL(BASE_URL),
 
   title: {
-    default: 'Autos 2022 | Compraventa de coches en Vícar, Almería',
+    default: OG_TITLE,
     template: '%s | Autos 2022',
   },
 
-  description:
-    'Autos 2022 es una empresa de compraventa de vehículos en Vícar, Almería. Compra y venta de coches de ocasión, vehículos averiados, siniestrados o para desguace, con trato directo y atención personalizada.',
+  description: OG_DESCRIPTION,
 
   keywords: [
     'compraventa de coches Vícar',
@@ -41,19 +45,22 @@ export const metadata = {
     apple: '/logo.jpeg',
   },
 
+  alternates: {
+    canonical: '/',
+  },
+
   openGraph: {
     siteName: 'Autos 2022',
     locale: 'es_ES',
     type: 'website',
     url: BASE_URL,
-    title: 'Autos 2022 | Compraventa de coches en Vícar, Almería',
-    description:
-      'Compra y venta de vehículos en Vícar, Almería. Pago inmediato en efectivo, recogida en menos de 24h. Vehículos averiados, siniestrados, con embargos o para desguace.',
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
     images: [
       {
-        url: '/logo.jpeg',
-        width: 400,
-        height: 400,
+        url: OG_IMAGE,
+        width: 1920,
+        height: 1080,
         alt: 'Autos 2022 — Compraventa de vehículos en Vícar, Almería',
       },
     ],
@@ -61,14 +68,9 @@ export const metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Autos 2022 | Compraventa de coches en Vícar, Almería',
-    description:
-      'Compramos todo tipo de vehículos en Almería. Pago inmediato, recogida en 24h, sin burocracia.',
-    images: ['/logo.jpeg'],
-  },
-
-  alternates: {
-    canonical: BASE_URL,
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
+    images: [OG_IMAGE],
   },
 
   robots: {

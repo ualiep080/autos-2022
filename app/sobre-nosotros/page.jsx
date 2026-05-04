@@ -3,7 +3,31 @@ import { IconCheckCircle } from '@/components/Icons';
 
 export const metadata = {
   title: 'Sobre Nosotros',
-  description: 'Transparencia y confianza por bandera · Trato directo y honesto · Especialistas en compraventa de vehículos en Almería.',
+  description:
+    'Conoce a Autos 2022, especialistas en compraventa de vehículos en Vícar, Almería. Trato directo, honesto y transparente con cada cliente.',
+  alternates: { canonical: '/sobre-nosotros' },
+  openGraph: {
+    type: 'website',
+    url: 'https://www.autos2022.es/sobre-nosotros',
+    title: 'Sobre Nosotros | Autos 2022',
+    description:
+      'Conoce a Autos 2022, especialistas en compraventa de vehículos en Vícar, Almería. Trato directo, honesto y transparente con cada cliente.',
+    images: [
+      {
+        url: '/hero-bg.webp',
+        width: 1920,
+        height: 1080,
+        alt: 'Sobre Autos 2022 — Compraventa de vehículos en Vícar, Almería',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sobre Nosotros | Autos 2022',
+    description:
+      'Especialistas en compraventa de vehículos en Vícar, Almería. Trato directo y honesto.',
+    images: ['/hero-bg.webp'],
+  },
 };
 
 export default function SobreNosotrosPage() {
