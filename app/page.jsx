@@ -48,16 +48,21 @@ export const metadata = {
 export const revalidate = 60;
 
 export default async function Home() {
-  const destacadas = await prisma.vehicle.findMany({
-    where: { 
-      destacado: true, 
-      visible: true,
-      estado: { not: 'vendido' }
-    },
-    include: { images: true },
-    orderBy: { fechaActualizacion: 'desc' },
-    take: 3,
-  });
+  let destacadas = [];
+  try {
+    destacadas = await prisma.vehicle.findMany({
+      where: {
+        destacado: true,
+        visible: true,
+        estado: { not: 'vendido' },
+      },
+      include: { images: true },
+      orderBy: { fechaActualizacion: 'desc' },
+      take: 3,
+    });
+  } catch {
+    // DB no disponible en build-time (ej. CI sin DATABASE_URL real)
+  }
 
   return (
     <div>

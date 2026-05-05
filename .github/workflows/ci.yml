@@ -28,9 +28,11 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # Variables mínimas para que el build no falle en CI
-          # Los valores reales van en Vercel, no aquí
-          DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://ci:ci@localhost/ci' }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET || 'ci-only-secret-not-used-in-production' }}
+          # Configura estos secrets en GitHub → Settings → Secrets and variables → Actions
+          # Si no están configurados, el build usa valores de CI que fallan rápido y de forma segura.
+          # Las páginas con DB usan try/catch y renderizan sin datos en ese caso.
+          DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://ci:ci@db.invalid:5432/ci' }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET || 'ci-only-not-used-in-production-32chars!!' }}
           ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL || 'ci@example.com' }}
-          ADMIN_PASSWORD_HASH: ${{ secrets.ADMIN_PASSWORD_HASH || '$2b$12$placeholder.hash.for.ci.only' }}
+          ADMIN_PASSWORD_HASH: ${{ secrets.ADMIN_PASSWORD_HASH || '$2b$12$aaaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' }}
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN || '' }}
