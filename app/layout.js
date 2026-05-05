@@ -15,7 +15,7 @@ const BASE_URL = 'https://www.autos2022.es';
 const OG_TITLE = 'Autos 2022 | Compraventa de coches en Vícar, Almería';
 const OG_DESCRIPTION =
   'Compra y venta de vehículos de ocasión en Vícar, Almería. Valoramos coches usados, averiados o sin ITV bajo valoración previa. Atención directa por teléfono y WhatsApp.';
-const OG_IMAGE = '/hero-bg.webp';
+const OG_IMAGE = '/og-image.jpg';
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),

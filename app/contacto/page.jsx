@@ -5,7 +5,10 @@ import {
   IconMessageCircle,
   IconClock,
   IconNavigation,
+  IconFacebook,
+  IconWallapop,
 } from '@/components/Icons';
+import { FACEBOOK_URL, WALLAPOP_URL } from '@/lib/social';
 
 export const metadata = {
   title: 'Contacto y Ubicación',
@@ -20,7 +23,7 @@ export const metadata = {
       'Contacta con Autos 2022 en Vícar, Almería. Llámanos o escríbenos por WhatsApp para una tasación gratuita de tu vehículo.',
     images: [
       {
-        url: '/hero-bg.webp',
+        url: '/og-image.jpg',
         width: 1920,
         height: 1080,
         alt: 'Contacto — Autos 2022, Vícar, Almería',
@@ -32,7 +35,7 @@ export const metadata = {
     title: 'Contacto y Ubicación | Autos 2022',
     description:
       'Contacta con Autos 2022 en Vícar, Almería. Tasación gratuita de tu vehículo.',
-    images: ['/hero-bg.webp'],
+    images: ['/og-image.jpg'],
   },
 };
 
@@ -98,6 +101,35 @@ export default function ContactoPage() {
                 <p style={{ color: 'var(--text-muted)' }}>L-V: 09:30 - 14:00 y 16:30 - 20:00<br />Sábados y Domingos: <strong style={{ color: 'var(--text)', fontWeight: 700 }}>
                   Cita previa
                 </strong></p>
+              </div>
+            </div>
+
+            {/* También estamos en */}
+            <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem', marginTop: '0.5rem' }}>
+              <strong style={{ display: 'block', marginBottom: '1rem', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-muted)' }}>
+                También estamos en
+              </strong>
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                <a
+                  href={FACEBOOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook de Autos 2022"
+                  className="social-chip"
+                >
+                  <IconFacebook size={18} color="#1877F2" />
+                  Facebook
+                </a>
+                <a
+                  href={WALLAPOP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Wallapop de Autos 2022"
+                  className="social-chip"
+                >
+                  <IconWallapop size={18} />
+                  Wallapop
+                </a>
               </div>
             </div>
           </div>

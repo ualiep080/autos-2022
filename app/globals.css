@@ -323,6 +323,26 @@ input, textarea, select {
   -webkit-overflow-scrolling: touch;
 }
 
+/* ===== SOCIAL CHIP (used in contacto page) ===== */
+.social-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.social-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
 /* ===== PAGE LAYOUT HELPERS (used by pages with inline styles) ===== */
 
 /* Reusable responsive card padding */

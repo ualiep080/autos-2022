@@ -29,7 +29,7 @@ export const metadata = {
       'Compra y venta de vehículos de ocasión en Vícar, Almería. Valoramos coches usados, averiados o sin ITV bajo valoración previa. Atención directa por teléfono y WhatsApp.',
     images: [
       {
-        url: '/hero-bg.webp',
+        url: '/og-image.jpg',
         width: 1920,
         height: 1080,
         alt: 'Autos 2022 — Compraventa de vehículos en Vícar, Almería',
@@ -41,7 +41,7 @@ export const metadata = {
     title: 'Autos 2022 | Compraventa de coches en Vícar, Almería',
     description:
       'Compra y venta de vehículos de ocasión en Vícar, Almería. Valoramos coches usados, averiados o sin ITV bajo valoración previa. Atención directa por teléfono y WhatsApp.',
-    images: ['/hero-bg.webp'],
+    images: ['/og-image.jpg'],
   },
 };
 

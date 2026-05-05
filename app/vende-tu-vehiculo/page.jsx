@@ -25,7 +25,7 @@ export const metadata = {
       'Compramos todo tipo de vehículos en Almería: usados, averiados, sin ITV o con embargos. Pago inmediato en efectivo y recogida en menos de 24h.',
     images: [
       {
-        url: '/vende-hero-bg.webp',
+        url: '/og-image.jpg',
         width: 1920,
         height: 1080,
         alt: 'Vende tu vehículo — Autos 2022, Vícar, Almería',
@@ -37,7 +37,7 @@ export const metadata = {
     title: 'Vende tu Vehículo | Autos 2022',
     description:
       'Compramos todo tipo de vehículos en Almería. Pago inmediato, recogida en 24h.',
-    images: ['/vende-hero-bg.webp'],
+    images: ['/og-image.jpg'],
   },
 };
 

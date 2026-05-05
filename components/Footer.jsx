@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { IconLocation, IconPhone, IconClock, IconMessageCircle } from './Icons';
+import { IconLocation, IconPhone, IconClock, IconMessageCircle, IconFacebook, IconWallapop } from './Icons';
 import styles from './Footer.module.css';
+import { FACEBOOK_URL, WALLAPOP_URL } from '@/lib/social';
 
 export default function Footer() {
   return (
@@ -34,6 +35,31 @@ export default function Footer() {
             >
               <IconMessageCircle size={16} /> Solicitar tasación gratis
             </a>
+
+            {/* Social links */}
+            <div className={styles.social}>
+              <span className={styles.socialLabel}>Síguenos</span>
+              <div className={styles.socialLinks}>
+                <a
+                  href={FACEBOOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook de Autos 2022"
+                  className={styles.socialLink}
+                >
+                  <IconFacebook size={18} />
+                </a>
+                <a
+                  href={WALLAPOP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Wallapop de Autos 2022"
+                  className={styles.socialLink}
+                >
+                  <IconWallapop size={18} />
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* Links rápidos */}

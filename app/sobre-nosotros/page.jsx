@@ -14,7 +14,7 @@ export const metadata = {
       'Conoce a Autos 2022, especialistas en compraventa de vehículos en Vícar, Almería. Trato directo, honesto y transparente con cada cliente.',
     images: [
       {
-        url: '/hero-bg.webp',
+        url: '/og-image.jpg',
         width: 1920,
         height: 1080,
         alt: 'Sobre Autos 2022 — Compraventa de vehículos en Vícar, Almería',
@@ -26,7 +26,7 @@ export const metadata = {
     title: 'Sobre Nosotros | Autos 2022',
     description:
       'Especialistas en compraventa de vehículos en Vícar, Almería. Trato directo y honesto.',
-    images: ['/hero-bg.webp'],
+    images: ['/og-image.jpg'],
   },
 };
 

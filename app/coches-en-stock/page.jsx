@@ -18,7 +18,7 @@ export const metadata = {
       'Vehículos de ocasión revisados y garantizados. Encuentra tu próximo coche al mejor precio en Vícar, Almería.',
     images: [
       {
-        url: '/hero-bg.webp',
+        url: '/og-image.jpg',
         width: 1920,
         height: 1080,
         alt: 'Coches en stock — Autos 2022, Vícar, Almería',
@@ -30,7 +30,7 @@ export const metadata = {
     title: 'Coches en Stock | Autos 2022',
     description:
       'Vehículos de ocasión revisados y garantizados en Vícar, Almería.',
-    images: ['/hero-bg.webp'],
+    images: ['/og-image.jpg'],
   },
 };
 
