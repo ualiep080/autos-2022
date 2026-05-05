@@ -235,25 +235,20 @@ export function IconFilter({ size = 24, color = 'currentColor' }) {
 }
 
 export function IconFacebook({ size = 24, color = 'currentColor' }) {
+  // Icono oficial Facebook "f" — mismo path que react-icons FaFacebookF
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill={color} aria-hidden="true">
-      <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.791-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" />
+    <svg width={size} height={size} viewBox="0 0 320 512" fill={color} aria-hidden="true">
+      <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
     </svg>
   );
 }
 
 export function IconWallapop({ size = 24, color = 'currentColor' }) {
+  // W estilizada de Wallapop — path trazado, no texto genérico
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="1" y="1" width="22" height="22" rx="5" stroke={color} strokeWidth="1.8" />
-      <text
-        x="12" y="16.5"
-        textAnchor="middle"
-        fontFamily="Arial Black, Arial, sans-serif"
-        fontWeight="900"
-        fontSize="13"
-        fill={color}
-      >W</text>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true"
+         stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="2,4 6.5,20 12,9 17.5,20 22,4" />
     </svg>
   );
 }
