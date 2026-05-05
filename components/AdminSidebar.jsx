@@ -23,6 +23,7 @@ export default function AdminSidebar() {
     { name: 'Contactos (Leads)', path: '/admin/leads' }
   ];
 
+
   const styles = {
     // Removed sidebar inline styles as they are now in globals.css
     logo: {
@@ -56,19 +57,19 @@ export default function AdminSidebar() {
     <aside className="admin-sidebar">
       <div className="admin-logo-wrapper" style={{ marginBottom: '3rem' }}>
         <Link href="/" style={styles.logo}>
-          Autos <span style={{color: 'var(--primary)'}}>2022</span>
+          Autos <span style={{ color: 'var(--primary)' }}>2022</span>
         </Link>
-        <div style={{fontSize:'0.875rem', fontWeight:'normal', color:'#94a3b8', marginTop: '0.25rem'}}>Panel Admin</div>
+        <div style={{ fontSize: '0.875rem', fontWeight: 'normal', color: '#94a3b8', marginTop: '0.25rem' }}>Panel Admin</div>
       </div>
       <nav style={styles.nav}>
         {navItems.map((item) => {
           const isActive = pathname.startsWith(item.path);
           return (
-            <Link 
+            <Link
               key={item.name}
-              href={item.path} 
+              href={item.path}
               style={{
-                ...styles.link, 
+                ...styles.link,
                 ...(isActive ? styles.linkActive : {})
               }}
               onMouseEnter={(e) => {
@@ -82,20 +83,20 @@ export default function AdminSidebar() {
             </Link>
           );
         })}
-        <Link 
-          href="/" 
-          style={{...styles.link, marginTop: 'auto'}} 
+        <Link
+          href="/"
+          style={{ ...styles.link, marginTop: 'auto' }}
           target="_blank"
           onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light)'}
           onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
         >
           Ver web pública ↗
         </Link>
-        <button 
+        <button
           onClick={handleLogout}
           style={{
-            ...styles.link, 
-            marginTop: '0.5rem', 
+            ...styles.link,
+            marginTop: '0.5rem',
             backgroundColor: 'transparent',
             border: 'none',
             textAlign: 'left',
