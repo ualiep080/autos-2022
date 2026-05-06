@@ -7,7 +7,7 @@ const GOOGLE_REVIEW_URL = 'https://g.page/r/CS1WU5qKHuxmEBM/review';
 
 // Sustituir estos objetos por resenas reales de la ficha de Google de Autos 2022
 // Copiar texto y nombre exactamente como aparecen en Google Business Profile
-// La seccion no se muestra si el array esta vacio
+// Si el array esta vacio se muestra el estado de invitacion a resenar sin cards
 const googleReviews = [];
 
 function StarRating({ rating }) {
@@ -23,29 +23,43 @@ function StarRating({ rating }) {
 }
 
 export default function GoogleReviewsSection() {
-  if (googleReviews.length === 0) return null;
+  const hasReviews = googleReviews.length > 0;
 
   return (
     <section className={styles.section}>
       <div className="container">
         <div className={styles.header}>
           <div className="accent-line" style={{ margin: '0 auto 1.5rem' }} />
-          <h2 className={styles.title}>Opiniones de clientes</h2>
-          <p className={styles.subtitle}>
-            Clientes que ya han confiado en Autos 2022 para comprar o vender su
-            vehículo en Vícar, Almería.
-          </p>
+          {hasReviews ? (
+            <>
+              <h2 className={styles.title}>Opiniones de clientes</h2>
+              <p className={styles.subtitle}>
+                Clientes que ya han confiado en Autos 2022 para comprar o vender su
+                vehículo en Vícar, Almería.
+              </p>
+            </>
+          ) : (
+            <>
+              <h2 className={styles.title}>Tu opinión nos ayuda a mejorar</h2>
+              <p className={styles.subtitle}>
+                Si has comprado o vendido tu vehículo con Autos 2022, puedes dejarnos
+                tu reseña en Google. Tu valoración ayuda a que más clientes nos encuentren.
+              </p>
+            </>
+          )}
         </div>
 
-        <div className={styles.grid}>
-          {googleReviews.map((review, i) => (
-            <article key={i} className={styles.card}>
-              <StarRating rating={review.rating} />
-              <p className={styles.text}>&ldquo;{review.text}&rdquo;</p>
-              <p className={styles.author}>{review.name}</p>
-            </article>
-          ))}
-        </div>
+        {hasReviews && (
+          <div className={styles.grid}>
+            {googleReviews.map((review, i) => (
+              <article key={i} className={styles.card}>
+                <StarRating rating={review.rating} />
+                <p className={styles.text}>&ldquo;{review.text}&rdquo;</p>
+                <p className={styles.author}>{review.name}</p>
+              </article>
+            ))}
+          </div>
+        )}
 
         <div className={styles.actions}>
           <a
