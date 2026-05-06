@@ -25,6 +25,12 @@ export default async function sitemap() {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/vehiculos-vendidos`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/contacto`,
       lastModified: new Date(),
       changeFrequency: 'monthly',

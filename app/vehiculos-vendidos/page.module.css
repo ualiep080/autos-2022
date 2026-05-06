@@ -1,0 +1,148 @@
+.pageHeader {
+  background: var(--secondary);
+  padding: 4rem 0 3rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #9ca3af;
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.accentLine {
+  width: 48px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 2px;
+  margin: 0 auto 1.5rem;
+}
+
+/* Grid */
+.section {
+  padding: 4rem 0;
+  background: var(--surface-color);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.empty {
+  text-align: center;
+  padding: 4rem 0;
+  color: var(--text-muted);
+}
+
+/* CTA */
+.ctaSection {
+  padding: 4rem 0 5rem;
+  background: var(--bg-color);
+}
+
+.ctaBox {
+  background: var(--secondary);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem 3rem;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.ctaTitle {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 0.75rem;
+}
+
+.ctaTitle span {
+  color: #F5C518;
+}
+
+.ctaDesc {
+  color: #9ca3af;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.ctaActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .pageHeader {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .section {
+    padding: 2.5rem 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .ctaBox {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .ctaTitle {
+    font-size: 1.5rem;
+  }
+
+  .ctaActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ctaActions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageHeader {
+    padding: 2.5rem 0 2rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .ctaBox {
+    padding: 2rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .ctaTitle {
+    font-size: 1.25rem;
+  }
+}

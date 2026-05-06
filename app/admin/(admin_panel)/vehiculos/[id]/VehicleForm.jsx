@@ -241,6 +241,21 @@ export default function VehicleForm({ vehicle, isNew }) {
         />
       </div>
 
+      {/* Comentario de operación */}
+      <div>
+        <label style={labelStyle}>Comentario de operación</label>
+        <textarea
+          name="soldComment"
+          defaultValue={vehicle?.soldComment || ''}
+          placeholder="Ejemplo: Operación gestionada de forma sencilla y trato directo con el cliente."
+          rows={3}
+          style={{ ...inputStyle, resize: 'vertical', fontFamily: 'inherit', fontSize: 'inherit' }}
+        />
+        <p style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.25rem' }}>
+          Texto opcional que se mostrará en la sección Vehículos vendidos cuando el vehículo esté marcado como vendido.
+        </p>
+      </div>
+
       {/* Subir imágenes */}
       <div>
         <label style={labelStyle}>Subir Nuevas Imágenes</label>

@@ -27,6 +27,7 @@ model Vehicle {
   descripcion      String?
   equipamiento     String?
   observaciones    String?
+  soldComment      String?        @map("sold_comment")
   estado           String         @default("disponible") // disponible, reservado, vendido
   destacado        Boolean        @default(false)
   visible          Boolean        @default(true)

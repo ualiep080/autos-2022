@@ -20,6 +20,7 @@ export async function saveVehicleAction(formData, id, isNew) {
     const potenciaRaw = formData.get('potencia');
     const colorRaw = formData.get('color');
     const etiquetaRaw = formData.get('etiquetaAmbiental');
+    const soldCommentRaw = formData.get('soldComment');
 
     const destacado = formData.get('destacado') === 'on' || formData.get('destacado') === 'true';
 
@@ -27,6 +28,7 @@ export async function saveVehicleAction(formData, id, isNew) {
     const potencia = potenciaRaw ? parseInt(potenciaRaw) || null : null;
     const color = colorRaw?.trim() || null;
     const etiquetaAmbiental = (etiquetaRaw && etiquetaRaw !== '') ? etiquetaRaw : null;
+    const soldComment = soldCommentRaw?.trim() || null;
 
     const slug = `${marca.toLowerCase()}-${modelo.toLowerCase().replace(/ /g, '-')}-${Date.now()}`;
 
@@ -48,6 +50,7 @@ export async function saveVehicleAction(formData, id, isNew) {
       marca, modelo, version, year, kilometros, combustible, cambio,
       precio, estado, descripcion, potencia, color, etiquetaAmbiental,
       destacado: finalDestacado,
+      soldComment,
       slug: isNew ? slug : undefined,
     };
 

@@ -37,7 +37,7 @@ export const metadata = {
 export default async function CatalogPage({ searchParams }) {
   const { marca, combustible, precio_max } = await searchParams;
 
-  const filters = { visible: true };
+  const filters = { visible: true, estado: { not: 'vendido' } };
 
   if (marca) filters.marca = marca;
   if (combustible) filters.combustible = combustible;
@@ -51,7 +51,7 @@ export default async function CatalogPage({ searchParams }) {
 
   // Get distinct marcas for the filter
   const distinctMarcas = await prisma.vehicle.findMany({
-    where: { visible: true },
+    where: { visible: true, estado: { not: 'vendido' } },
     select: { marca: true },
     distinct: ['marca'],
   });

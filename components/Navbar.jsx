@@ -35,6 +35,7 @@ export default function Navbar() {
           <div className={`${styles.links} ${isOpen ? styles.open : ''}`}>
             <Link href="/" className={styles.link} onClick={closeMenu}>Inicio</Link>
             <Link href="/coches-en-stock" className={styles.link} onClick={closeMenu}>Coches en stock</Link>
+            <Link href="/vehiculos-vendidos" className={styles.link} onClick={closeMenu}>Vehículos vendidos</Link>
             <Link href="/vende-tu-vehiculo" className={styles.link} onClick={closeMenu}>Vende tu vehículo</Link>
             <Link href="/sobre-nosotros" className={styles.link} onClick={closeMenu}>Sobre nosotros</Link>
             <Link href="/contacto" className={styles.link} onClick={closeMenu}>Contacto</Link>
