@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { prisma } from '@/lib/prisma';
 import VehicleCard from '@/components/VehicleCard';
 import HomeValuationCarousel from '@/components/HomeValuationCarousel';
+import GoogleReviewsSection from '@/components/GoogleReviewsSection';
 import styles from './page.module.css';
 import {
   IconCheckCircle,
@@ -337,6 +338,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* ===== OPINIONES DE CLIENTES ===== */}
+      <GoogleReviewsSection />
 
       {/* ===== BANNER VENDE TU VEHÍCULO ===== */}
       <section style={{ background: 'var(--bg-color)', padding: '0 0 5rem' }}>
