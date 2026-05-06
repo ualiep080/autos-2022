@@ -11,25 +11,44 @@ export default function VehicleGallery({ images, marca, modelo, estado }) {
   const count = images.length;
   const isOpen = lightboxIdx !== null;
 
-  const openAt = (idx) => setLightboxIdx(idx);
+  const openAt = (idx) => {
+    setLightboxIdx(idx);
+    setMainIdx(idx);
+  };
+
   const close = () => setLightboxIdx(null);
 
-  // Keep gallery main image in sync with lightbox navigation
-  useEffect(() => {
-    if (lightboxIdx !== null) setMainIdx(lightboxIdx);
-  }, [lightboxIdx]);
+  const prev = () => {
+    const newIdx = (lightboxIdx - 1 + count) % count;
+    setLightboxIdx(newIdx);
+    setMainIdx(newIdx);
+  };
 
-  // Keyboard: Escape closes, arrows navigate
+  const next = () => {
+    const newIdx = (lightboxIdx + 1) % count;
+    setLightboxIdx(newIdx);
+    setMainIdx(newIdx);
+  };
+
+  // Keyboard: Escape closes, arrows navigate — logic inlined to satisfy exhaustive-deps
   useEffect(() => {
     if (!isOpen) return;
     const onKey = (e) => {
-      if (e.key === 'Escape') setLightboxIdx(null);
-      else if (e.key === 'ArrowLeft') setLightboxIdx(i => (i - 1 + count) % count);
-      else if (e.key === 'ArrowRight') setLightboxIdx(i => (i + 1) % count);
+      if (e.key === 'Escape') {
+        setLightboxIdx(null);
+      } else if (e.key === 'ArrowLeft') {
+        const newIdx = (lightboxIdx - 1 + count) % count;
+        setLightboxIdx(newIdx);
+        setMainIdx(newIdx);
+      } else if (e.key === 'ArrowRight') {
+        const newIdx = (lightboxIdx + 1) % count;
+        setLightboxIdx(newIdx);
+        setMainIdx(newIdx);
+      }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [isOpen, count]);
+  }, [isOpen, lightboxIdx, count]);
 
   // Prevent body scroll while lightbox is open
   useEffect(() => {
@@ -82,7 +101,7 @@ export default function VehicleGallery({ images, marca, modelo, estado }) {
                 key={img.id}
                 type="button"
                 className={`${styles.thumbBtn} ${mainIdx === idx ? styles.thumbActive : ''}`}
-                onClick={() => { setMainIdx(idx); openAt(idx); }}
+                onClick={() => openAt(idx)}
                 aria-label={`Ver foto ${idx + 1} de ${count}`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -104,8 +123,6 @@ export default function VehicleGallery({ images, marca, modelo, estado }) {
         >
           {/* Close */}
           <button
-            // eslint-disable-next-line jsx-a11y/no-autofocus
-            autoFocus
             type="button"
             className={styles.lightboxClose}
             onClick={close}
@@ -138,7 +155,7 @@ export default function VehicleGallery({ images, marca, modelo, estado }) {
               <button
                 type="button"
                 className={`${styles.lightboxNav} ${styles.lightboxPrev}`}
-                onClick={() => setLightboxIdx(i => (i - 1 + count) % count)}
+                onClick={prev}
                 aria-label="Imagen anterior"
               >
                 <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" aria-hidden="true">
@@ -148,7 +165,7 @@ export default function VehicleGallery({ images, marca, modelo, estado }) {
               <button
                 type="button"
                 className={`${styles.lightboxNav} ${styles.lightboxNext}`}
-                onClick={() => setLightboxIdx(i => (i + 1) % count)}
+                onClick={next}
                 aria-label="Imagen siguiente"
               >
                 <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" aria-hidden="true">
