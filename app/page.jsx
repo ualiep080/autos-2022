@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { prisma } from '@/lib/prisma';
 import VehicleCard from '@/components/VehicleCard';
+import HomeValuationCarousel from '@/components/HomeValuationCarousel';
 import styles from './page.module.css';
 import {
   IconCheckCircle,
@@ -265,6 +266,74 @@ export default async function Home() {
                 Te ofrecemos el mejor precio del mercado. Consulta sin compromiso.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== VALORAMOS VEHÍCULOS EN DIFERENTES ESTADOS ===== */}
+      <section className={`${styles.section} ${styles.sectionLight}`}>
+        <div className="container">
+          <div className={styles.valuationHeader}>
+            <div className="accent-line" style={{ margin: '0 auto 1.5rem' }} />
+            <h2 className="section-title">Valoramos vehículos en diferentes estados</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto' }}>
+              En Autos 2022, en Vícar, Almería, estudiamos cada operación de forma personalizada.
+              Valoramos coches usados, averiados, sin ITV o siniestrados, siempre bajo valoración
+              previa y con trato directo.
+            </p>
+          </div>
+
+          <div className={styles.valuationBody}>
+            <HomeValuationCarousel />
+
+            <div className={styles.valuationCards}>
+              <div className={styles.valuationCard}>
+                <div className={styles.valuationCardIcon}><IconCar size={22} /></div>
+                <h3 className={styles.valuationCardTitle}>Coches usados</h3>
+                <p className={styles.valuationCardText}>
+                  Valoramos vehículos de ocasión según estado, kilometraje, documentación y demanda.
+                </p>
+              </div>
+              <div className={styles.valuationCard}>
+                <div className={styles.valuationCardIcon}><IconShield size={22} /></div>
+                <h3 className={styles.valuationCardTitle}>Averiados o sin ITV</h3>
+                <p className={styles.valuationCardText}>
+                  También estudiamos operaciones con vehículos averiados o sin ITV, siempre bajo valoración previa.
+                </p>
+              </div>
+              <div className={styles.valuationCard}>
+                <div className={styles.valuationCardIcon}><IconCheckCircle size={22} /></div>
+                <h3 className={styles.valuationCardTitle}>Siniestrados bajo valoración</h3>
+                <p className={styles.valuationCardText}>
+                  Revisamos cada caso de forma individual para ofrecer una valoración ajustada al estado real del vehículo.
+                </p>
+              </div>
+              <div className={styles.valuationCard}>
+                <div className={styles.valuationCardIcon}><IconFileCheck size={22} /></div>
+                <h3 className={styles.valuationCardTitle}>Gestión de la operación</h3>
+                <p className={styles.valuationCardText}>
+                  Te atendemos de forma directa y, si procede, coordinamos los pasos necesarios para cerrar la compraventa.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p className={styles.valuationNote}>
+            Según el caso, también podemos coordinar la recogida del vehículo dentro de la operación de compra.
+          </p>
+
+          <div className={styles.valuationCta}>
+            <a
+              href="https://wa.me/34610259725?text=Hola%2C%20quiero%20solicitar%20una%20valoraci%C3%B3n%20para%20mi%20veh%C3%ADculo"
+              className="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconMessageCircle size={20} /> Solicitar valoración por WhatsApp
+            </a>
+            <Link href="/vende-tu-vehiculo" className="btn btn-outline">
+              Ver cómo vender mi vehículo
+            </Link>
           </div>
         </div>
       </section>

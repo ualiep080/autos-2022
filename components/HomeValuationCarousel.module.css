@@ -1,0 +1,112 @@
+.carousel {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #0a0a0a;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+}
+
+.track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+  pointer-events: none;
+}
+
+.slideActive {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.52);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.18s ease;
+}
+
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.arrowPrev {
+  left: 0.75rem;
+}
+
+.arrowNext {
+  right: 0.75rem;
+}
+
+.dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, width 0.2s ease;
+}
+
+.dotActive {
+  background: #F5C518;
+  width: 24px;
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-md, 0.5rem);
+  }
+
+  .arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .arrowPrev {
+    left: 0.5rem;
+  }
+
+  .arrowNext {
+    right: 0.5rem;
+  }
+}
