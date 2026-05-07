@@ -8,7 +8,38 @@ const GOOGLE_REVIEW_URL = 'https://g.page/r/CS1WU5qKHuxmEBM/review';
 // Sustituir estos objetos por resenas reales de la ficha de Google de Autos 2022
 // Copiar texto y nombre exactamente como aparecen en Google Business Profile
 // Si el array esta vacio se muestra el estado de invitacion a resenar sin cards
-const googleReviews = [];
+const googleReviews = [
+  {
+    name: 'Martina Nanzier',
+    rating: 5,
+    text: 'La experiencia con el vendedor fue muy buena. Su atención y compromiso con el comprador es excelente y real. Les doy mi recomendación, es leal.',
+  },
+  {
+    name: 'Juan Martinez',
+    rating: 5,
+    text: 'Profesional muy cercano con el cliente, te ayuda en lo que puede.',
+  },
+  {
+    name: 'Francisco Fernandez',
+    rating: 5,
+    text: 'Servicio perfecto. Grandes profesionales. Gracias por todo.',
+  },
+  {
+    name: 'juanje sg',
+    rating: 5,
+    text: 'Todo perfecto, ningún tipo de problema. Gran profesional.',
+  },
+  {
+    name: 'Jeanpool Carbajal pinto',
+    rating: 5,
+    text: 'Muy buena atención, 10/10.',
+  },
+  {
+    name: 'colorinm33',
+    rating: 5,
+    text: 'Buen trato, buen servicio, muy atento. Una persona encantadora, no dudes en contactar con él.',
+  },
+];
 
 function StarRating({ rating }) {
   return (
